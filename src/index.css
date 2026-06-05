@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* ── Add these to your index.css or App.css ── */
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes floatYSlow {
+  0%, 100% { transform: translateY(-50%); }   /* preserves the centering offset */
+  50%       { transform: translateY(calc(-50% - 5px)); }
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #7C5CFF44; border-radius: 99px; }
+}
+
+@layer components {
+  /* Glass card base */
+  .glass-card {
+    @apply backdrop-blur-xl border border-white/25 rounded-2xl shadow-2xl;
+    background: rgba(255, 255, 255, 0.13);
+  }
+  .dark .glass-card {
+    background: rgba(30, 20, 60, 0.55);
+    @apply border-white/10;
+  }
+
+  /* Purple gradient button */
+  .btn-purple {
+    @apply bg-gradient-to-r from-[#7C5CFF] to-[#A78BFA] text-white font-semibold
+           rounded-xl px-7 py-3 shadow-lg shadow-purple-500/30
+           hover:shadow-purple-500/50 hover:-translate-y-0.5
+           transition-all duration-200 flex items-center gap-2.5 text-[15px];
+  }
+
+  /* Outline button */
+  .btn-outline {
+    @apply border-2 border-purple-200 text-slate-700 dark:text-white dark:border-white/20
+           font-semibold rounded-xl px-7 py-3
+           hover:border-[#7C5CFF] hover:text-[#7C5CFF] dark:hover:border-purple-400 dark:hover:text-purple-300
+           hover:-translate-y-0.5 transition-all duration-200
+           flex items-center gap-2.5 text-[15px];
+  }
+
+  /* Halftone dot pattern */
+  .halftone {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.22) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+  }
+}
+
+@layer utilities {
+  .animation-delay-150  { animation-delay: 150ms; }
+  .animation-delay-300  { animation-delay: 300ms; }
+  .animation-delay-500  { animation-delay: 500ms; }
+  .animation-delay-700  { animation-delay: 700ms; }
+  .animation-delay-1000 { animation-delay: 1000ms; }
+  .animation-delay-1500 { animation-delay: 1500ms; }
+  .animation-fill-both  { animation-fill-mode: both; }
+}

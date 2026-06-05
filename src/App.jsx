@@ -1,0 +1,52 @@
+import { useState } from 'react';
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import Hero from './components/Hero';
+import About from './components/About';
+
+export default function App() {
+  const [dark, setDark] = useState(false);
+  const [activePage, setActivePage] = useState('Home');
+
+  const renderPage = () => {
+    switch (activePage) {
+      case 'Home':         return <Hero dark={dark} onNavigate={setActivePage} />;
+      case 'About':        return <About dark={dark} />;
+      // Uncomment as you build each section:
+      // case 'Skills':       return <Skills dark={dark} />;
+      // case 'Projects':     return <Projects dark={dark} />;
+      // case 'Certificates': return <Certificates dark={dark} />;
+      // case 'Contact':      return <Contact dark={dark} />;
+      default:             return <Hero dark={dark} onNavigate={setActivePage} />;
+    }
+  };
+
+  return (
+    <div className={dark ? 'dark' : ''}>
+      <div className="relative flex flex-col h-screen overflow-hidden font-poppins bg-[#F8F9FC] dark:bg-[#0f172a] transition-colors duration-300">
+
+        <Navbar
+          dark={dark}
+          onToggleDark={() => setDark(d => !d)}
+          activePage={activePage}
+          onNavigate={setActivePage}
+          /* Hire Me in Navbar → navigates to Contact section */
+          onHireMe={() => setActivePage('Contact')}
+        />
+
+        <div className="flex flex-1 overflow-hidden">
+          <Sidebar
+            dark={dark}
+            onToggleDark={() => setDark(d => !d)}
+            activePage={activePage}
+            onNavigate={setActivePage}
+          />
+          <main className="flex-1 overflow-hidden">
+            {renderPage()}
+          </main>
+        </div>
+
+      </div>
+    </div>
+  );
+}

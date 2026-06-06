@@ -132,7 +132,7 @@ function LeftPanel({ onNavigate }) {
           <span className="relative inline-flex rounded-full h-3 w-3
                            bg-emerald-500" />
         </span>
-        Get to Know Me
+       2026 Graduate &amp; Open to Full-Time Roles
       </div>
 
       {/* Heading */}
@@ -278,17 +278,18 @@ function MobileHero({ onNavigate }) {
   return (
     <div className="flex flex-col w-full bg-white dark:bg-[#0f172a]">
 
-      {/* ── BLOCK 1: Intro text ── */}
-      <div className="px-5 pt-6 pb-5" style={{ animation: 'fadeUp 0.5s ease 0.1s both' }}>
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full
                         bg-purple-50 dark:bg-purple-900/30
                         border border-purple-200/70 dark:border-purple-700/50
-                        text-[#7C5CFF] dark:text-purple-300 text-[12px] font-medium
+                        text-[#7C5CFF] dark:text-purple-300 text-[13px] font-semibold
                         w-fit mb-4">
-          <span className="text-[14px] leading-none">⚡</span>
+          <span className="relative flex h-2.5 w-2.5 shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+          </span>
           2026 Graduate · Open to Full-Time Roles
-        </div>
+        
 
         {/* Heading */}
         <h1 className="leading-tight mb-2" style={{ animation: 'fadeUp 0.5s ease 0.2s both' }}>

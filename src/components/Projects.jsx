@@ -484,7 +484,7 @@ export default function Projects() {
           </div>
           <h2 className="m-0 mb-2 text-[28px] font-black tracking-tight leading-tight">
             <span className="text-zinc-900 dark:text-white transition-colors duration-500">My </span>
-            <span className="bg-gradient-to-right from-purple-500 to-indigo-400 bg-clip-text text-transparent">Projects</span>
+            <span className="bg-gradient-to-r from-purple-500 to-indigo-400 bg-clip-text text-transparent">Projects</span>
           </h2>
           <p className="m-0 text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed transition-colors duration-500">
             Here are some of the projects I've built using modern technologies. Each project is designed to solve real-world problems.

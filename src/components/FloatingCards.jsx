@@ -65,14 +65,14 @@ export function CodeCard() {
           fontFamily: 'monospace', fontSize: 10.5, lineHeight: 1.7,
           color: 'rgba(255,255,255,0.9)', whiteSpace: 'pre', overflow: 'hidden', margin: 0,
         }}>
-<span style={{color:'#c4b5fd'}}>const</span> <span style={{color:'#fff'}}>developer</span> = {`{
-  `}<span style={{color:'#c4b5fd'}}>name</span>: <span style={{color:'#6ee7b7'}}>"Selvakumari K"</span>,{`
-  `}<span style={{color:'#c4b5fd'}}>role</span>: <span style={{color:'#6ee7b7'}}>"Full Stack Dev"</span>,{`
-  `}<span style={{color:'#c4b5fd'}}>passion</span>: <span style={{color:'#fde68a'}}>"Building"</span>,{`
-  `}<span style={{color:'#c4b5fd'}}>learning</span>: [{`
-    `}<span style={{color:'#6ee7b7'}}>"Django"</span>,<span style={{color:'#6ee7b7'}}>"AI"</span>{`
-  `}]{`
-}`};</pre>
+{`\x1b[0m`}<span style={{color:'#c4b5fd'}}>const</span>{` `}<span style={{color:'#fff'}}>developer</span>{` = {
+  `}<span style={{color:'#c4b5fd'}}>name</span>{`: `}<span style={{color:'#6ee7b7'}}>"Selvakumari K"</span>{`,
+  `}<span style={{color:'#c4b5fd'}}>role</span>{`: `}<span style={{color:'#6ee7b7'}}>"Full Stack Dev"</span>{`,
+  `}<span style={{color:'#c4b5fd'}}>passion</span>{`: `}<span style={{color:'#fde68a'}}>"Building"</span>{`,
+  `}<span style={{color:'#c4b5fd'}}>learning</span>{`: [
+    `}<span style={{color:'#6ee7b7'}}>"Django"</span>{`,`}<span style={{color:'#6ee7b7'}}>"AI"</span>{`
+  ]
+};`}</pre>
         <p style={{ fontFamily: 'monospace', fontSize: 10, color: 'rgba(196,181,253,0.9)', marginTop: 6 }}>
           &lt;/code&gt;
         </p>
@@ -99,7 +99,6 @@ export function TechCard() {
         <p style={{ color: '#fff', fontWeight: 700, fontSize: 13, marginBottom: 12, fontFamily: "'Syne', sans-serif" }}>
           Tech I Use
         </p>
-        {/* ✅ 4-col grid, icons uniform 40×40, perfectly centered */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
           {techIcons.map(({ Icon, color, label, bg }) => (
             <div key={label} title={label} style={{
@@ -122,7 +121,7 @@ export function TechCard() {
 }
 
 /* ── About Card ── */
-export function AboutCard({onNavigate}) {
+export function AboutCard({ onNavigate }) {
   return (
     <GlassCard style={{
       bottom: 20, right: 16,
@@ -149,7 +148,7 @@ export function AboutCard({onNavigate}) {
           integration to solve real-world problems.
         </p>
         <button
-         onClick={() => onNavigate?.('About')}
+          onClick={() => onNavigate?.('About')}
           style={{
             display: 'flex', alignItems: 'center', gap: 6,
             background: 'rgba(255,255,255,0.9)', color: '#7C5CFF',
@@ -167,7 +166,7 @@ export function AboutCard({onNavigate}) {
   );
 }
 
-export default function FloatingCards({onNavigate}) {
+export default function FloatingCards({ onNavigate }) {
   return (
     <>
       <style>{keyframes}</style>

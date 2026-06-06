@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Skills from './components/Skills';
 
 export default function App() {
   const [dark, setDark] = useState(false);
@@ -12,8 +13,8 @@ export default function App() {
     switch (activePage) {
       case 'Home':         return <Hero dark={dark} onNavigate={setActivePage} />;
       case 'About':        return <About dark={dark} />;
+      case 'Skills':       return <Skills dark={dark} />;
       // Uncomment as you build each section:
-      // case 'Skills':       return <Skills dark={dark} />;
       // case 'Projects':     return <Projects dark={dark} />;
       // case 'Certificates': return <Certificates dark={dark} />;
       // case 'Contact':      return <Contact dark={dark} />;
@@ -23,14 +24,14 @@ export default function App() {
 
   return (
     <div className={dark ? 'dark' : ''}>
-      <div className="relative flex flex-col h-screen overflow-hidden font-poppins bg-[#F8F9FC] dark:bg-[#0f172a] transition-colors duration-300">
+      <div className="relative flex flex-col h-screen overflow-hidden font-poppins
+                      bg-[#F8F9FC] dark:bg-[#0f172a] transition-colors duration-300">
 
         <Navbar
           dark={dark}
           onToggleDark={() => setDark(d => !d)}
           activePage={activePage}
           onNavigate={setActivePage}
-          /* Hire Me in Navbar → navigates to Contact section */
           onHireMe={() => setActivePage('Contact')}
         />
 

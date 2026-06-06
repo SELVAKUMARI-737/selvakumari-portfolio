@@ -387,74 +387,72 @@ function MobileHero({ onNavigate }) {
           </button>
         </div>
       </div>
-
-      {/* ── BLOCK 2: Purple visual with centered girl image ── */}
-      <div
-        className="relative w-full overflow-hidden"
-        style={{
-          minHeight: 360,
-          background: 'linear-gradient(135deg, #7C5CFF 0%, #8B6FFF 50%, #C4B5FD 100%)',
-          animation: 'fadeUp 0.5s ease 0.55s both',
-        }}
-      >
-        {/* Halftone dots */}
-        <div
-          className="absolute top-0 right-0 w-[60%] h-[60%] pointer-events-none"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.55) 1.2px, transparent 1.2px)',
-            backgroundSize: '14px 14px',
-            opacity: 0.4,
-          }}
-        />
-
-        {/* Radial glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.16) 0%, transparent 65%)' }}
-        />
-
-        {/* Geometric outline */}
-        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
-          <svg
-            width="70%" height="100%"
-            viewBox="0 0 300 420"
-            preserveAspectRatio="xMidYMax meet"
-            className="absolute bottom-0 left-1/2 -translate-x-1/2"
+          {/* ── BLOCK 2: Purple visual with centered girl image ── */}
+          <div
+            className="relative w-full overflow-hidden flex justify-center items-end"
+            style={{
+              minHeight: 360,
+              background: 'linear-gradient(135deg, #7C5CFF 0%, #8B6FFF 50%, #C4B5FD 100%)',
+              animation: 'fadeUp 0.5s ease 0.55s both',
+            }}
           >
-            <polygon points="150,30 272,148 272,400 28,400 28,148" fill="none" stroke="rgba(255,255,255,0.20)" strokeWidth="1.5" />
-            <polygon points="150,56 250,165 250,378 50,378 50,165" fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth="1" />
-          </svg>
-        </div>
+            {/* Halftone dots */}
+            <div
+              className="absolute top-0 right-0 w-[60%] h-[60%] pointer-events-none"
+              style={{
+                backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.55) 1.2px, transparent 1.2px)',
+                backgroundSize: '14px 14px',
+                opacity: 0.4,
+              }}
+            />
 
-        {/* Diagonal accent lines — bottom-left */}
-        <div className="absolute bottom-16 left-0 flex flex-col gap-2 pointer-events-none" style={{ zIndex: 1 }}>
-          {[60, 42, 28].map((w, i) => (
-            <div key={i} className="h-[3px] rounded-full bg-white"
-              style={{ width: `${w}px`, opacity: 0.35 - i * 0.08 }} />
-          ))}
-        </div>
+            {/* Radial glow */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ background: 'radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.16) 0%, transparent 65%)' }}
+            />
 
-        {/* Sparkle — bottom-right */}
-        <div
-          className="absolute bottom-5 right-5 text-white/60 text-xl pointer-events-none select-none"
-          style={{ zIndex: 2, animation: 'floatSparkle 3s ease-in-out infinite' }}
-        >✦</div>
+            {/* Geometric outline */}
+            <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+              <svg
+                width="70%" height="100%"
+                viewBox="0 0 300 420"
+                preserveAspectRatio="xMidYMax meet"
+                className="absolute bottom-0 left-1/2 -translate-x-1/2"
+              >
+                <polygon points="150,30 272,148 272,400 28,400 28,148" fill="none" stroke="rgba(255,255,255,0.20)" strokeWidth="1.5" />
+                <polygon points="150,56 250,165 250,378 50,378 50,165" fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth="1" />
+              </svg>
+            </div>
 
-        {/* Girl image — horizontally centered */}
-        <img
-          src={girlImg}
-          alt="Selvakumari K"
-          className="absolute bottom-0 left-1/2 object-contain pointer-events-none select-none"
-          style={{
-            transform: 'translateX(-50%)',
-            height: '94%',
-            maxHeight: '350px',
-            zIndex: 3,
-            filter: 'drop-shadow(0 18px 36px rgba(60,20,120,0.40))',
-            animation: 'floatY 5s ease-in-out infinite',
-          }}
-        />
-      </div>
+            {/* Diagonal accent lines — bottom-left */}
+            <div className="absolute bottom-16 left-0 flex flex-col gap-2 pointer-events-none" style={{ zIndex: 1 }}>
+              {[60, 42, 28].map((w, i) => (
+                <div key={i} className="h-[3px] rounded-full bg-white"
+                  style={{ width: `${w}px`, opacity: 0.35 - i * 0.08 }} />
+              ))}
+            </div>
+
+            {/* Sparkle — bottom-right */}
+            <div
+              className="absolute bottom-5 right-5 text-white/60 text-xl pointer-events-none select-none"
+              style={{ zIndex: 2, animation: 'floatSparkle 3s ease-in-out infinite' }}
+            >✦</div>
+
+            {/* Girl image — Cleanly Centered via Parent Flexbox */}
+            <img
+              src={girlImg}
+              alt="Selvakumari K"
+              className="relative max-w-full bottom-0 object-contain object-bottom pointer-events-none select-none"
+              style={{
+                height: '92%',
+                maxHeight: '350px',
+                zIndex: 3,
+                filter: 'drop-shadow(0 18px 36px rgba(60,20,120,0.40))',
+                animation: 'floatY 5s ease-in-out infinite',
+              }}
+            />
+          </div>
 
       {/* ── BLOCK 3: About Me card ── */}
       <div

@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import Projects from './components/Projects'; // Added the import for your new Projects section
 
 export default function App() {
   const [dark, setDark] = useState(false);
@@ -14,8 +15,8 @@ export default function App() {
       case 'Home':         return <Hero dark={dark} onNavigate={setActivePage} />;
       case 'About':        return <About dark={dark} />;
       case 'Skills':       return <Skills dark={dark} />;
+      case 'Projects':     return <Projects dark={dark} />; // Uncommented to enable the page
       // Uncomment as you build each section:
-      // case 'Projects':     return <Projects dark={dark} />;
       // case 'Certificates': return <Certificates dark={dark} />;
       // case 'Contact':      return <Contact dark={dark} />;
       default:             return <Hero dark={dark} onNavigate={setActivePage} />;

@@ -5,7 +5,8 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Certificates from './components/Certificates'; // Added the import for your new Certificates section
+import Certificates from './components/Certificates';
+import Contact from './components/Contact'; // Added the import for your new Contact section
 
 export default function App() {
   const [dark, setDark] = useState(false);
@@ -17,9 +18,8 @@ export default function App() {
       case 'About':        return <About dark={dark} />;
       case 'Skills':       return <Skills dark={dark} />;
       case 'Projects':     return <Projects dark={dark} />;
-      case 'Certificates': return <Certificates dark={dark} />; // Uncommented to enable the page routing
-      // Uncomment as you build each section:
-      // case 'Contact':      return <Contact dark={dark} />;
+      case 'Certificates': return <Certificates dark={dark} />;
+      case 'Contact':      return <Contact dark={dark} />; // Enabled contact routing
       default:             return <Hero dark={dark} onNavigate={setActivePage} />;
     }
   };

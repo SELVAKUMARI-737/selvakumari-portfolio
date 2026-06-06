@@ -1,10 +1,6 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    Contact.jsx
-   - Form submits via WhatsApp (wa.me deep link)
-   - Girl image enlarged + floating animation
-   - Entrance animations on all cards
-   Icons: lucide-react (UI) | react-icons/fa (brands — all verified)
-───────────────────────────────────────────────────────────────────────────── */
+ ───────────────────────────────────────────────────────────────────────────── */
 
 import { useState } from 'react';
 import {
@@ -15,7 +11,6 @@ import {
 import { FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
 import contactGirlImg from '../assets/contact-girl.png';
 
-/* ── WhatsApp number (digits only, with country code) ── */
 const WA_NUMBER = '919345726974';
 
 export default function Contact() {
@@ -29,25 +24,15 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.message) return;
-
     setSending(true);
-
     const text = [
-      `👋 *New Portfolio Message*`,
-      ``,
+      `👋 *New Portfolio Message*`, ``,
       `*Name:* ${formData.name}`,
-      formData.email ? `*Email:* ${formData.email}` : null,
+      formData.email   ? `*Email:* ${formData.email}`     : null,
       formData.subject ? `*Subject:* ${formData.subject}` : null,
-      ``,
-      `*Message:*`,
-      formData.message,
-    ]
-      .filter((l) => l !== null)
-      .join('\n');
-
-    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
-
+      ``, `*Message:*`, formData.message,
+    ].filter((l) => l !== null).join('\n');
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
     setTimeout(() => {
       setSending(false);
       setSent(true);
@@ -64,18 +49,18 @@ export default function Contact() {
   };
 
   const socialLinks = [
-    { icon: FaGithub,     href: 'https://github.com/SELVAKUMARI-737',      label: 'GitHub'    },
-    { icon: FaLinkedinIn, href: 'https://linkedin.com/in/selvakumari-sk',  label: 'LinkedIn'  },
-    { icon: FaWhatsapp,   href: `https://wa.me/${WA_NUMBER}`,              label: 'WhatsApp'  },
-    { icon: Mail,         href: 'mailto:kselvakumari737@gmail.com',        label: 'Email'     },
+    { icon: FaGithub,     href: 'https://github.com/SELVAKUMARI-737',     label: 'GitHub'   },
+    { icon: FaLinkedinIn, href: 'https://linkedin.com/in/selvakumari-sk', label: 'LinkedIn' },
+    { icon: FaWhatsapp,   href: `https://wa.me/${WA_NUMBER}`,             label: 'WhatsApp' },
+    { icon: Mail,         href: 'mailto:kselvakumari737@gmail.com',       label: 'Email'    },
   ];
 
   const contactDetails = [
-    { icon: Mail,         title: 'Email',    value: 'kselvakumari737@gmail.com',        href: 'mailto:kselvakumari737@gmail.com'        },
-    { icon: Phone,        title: 'Phone',    value: '9345726974',                        href: `https://wa.me/${WA_NUMBER}`              },
-    { icon: MapPin,       title: 'Location', value: 'Chennai, Tamilnadu, India',         href: '#'                                       },
-    { icon: FaLinkedinIn, title: 'LinkedIn', value: 'linkedin.com/in/selvakumari-sk',   href: 'https://linkedin.com/in/selvakumari-sk'  },
-    { icon: FaGithub,     title: 'GitHub',   value: 'github.com/SELVAKUMARI-737',       href: 'https://github.com/SELVAKUMARI-737'      },
+    { icon: Mail,         title: 'Email',    value: 'kselvakumari737@gmail.com',      href: 'mailto:kselvakumari737@gmail.com'       },
+    { icon: Phone,        title: 'Phone',    value: '9345726974',                      href: `https://wa.me/${WA_NUMBER}`             },
+    { icon: MapPin,       title: 'Location', value: 'Chennai, Tamilnadu, India',       href: '#'                                      },
+    { icon: FaLinkedinIn, title: 'LinkedIn', value: 'linkedin.com/in/selvakumari-sk', href: 'https://linkedin.com/in/selvakumari-sk' },
+    { icon: FaGithub,     title: 'GitHub',   value: 'github.com/SELVAKUMARI-737',     href: 'https://github.com/SELVAKUMARI-737'     },
   ];
 
   const inputCls =
@@ -83,6 +68,61 @@ export default function Contact() {
     'text-zinc-800 dark:text-zinc-100 rounded-xl outline-none ' +
     'focus:border-purple-400 dark:focus:border-purple-500 ' +
     'transition-all duration-200 text-[13px] font-medium box-border';
+
+  /* ── Single combined quote card — top-left ── */
+  const QuoteCard = () => (
+    <div style={{
+      position: 'absolute',
+      top: '18px',
+      left: '18px',
+      zIndex: 20,
+      background: 'rgba(255,255,255,0.93)',
+      backdropFilter: 'blur(10px)',
+      WebkitBackdropFilter: 'blur(10px)',
+      borderRadius: '14px',
+      padding: '13px 15px',
+      boxShadow: '0 6px 24px rgba(124,92,255,0.18)',
+      maxWidth: '200px',
+      animation: 'quoteSlide 0.6s ease 0.5s both',
+      border: '1px solid rgba(124,92,255,0.1)',
+    }}>
+      {/* Label */}
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: '5px',
+        marginBottom: '9px',
+      }}>
+        <div style={{ width: '3px', height: '28px', borderRadius: '2px', background: 'linear-gradient(to bottom, #7C5CFF, #A78BFA)', flexShrink: 0 }} />
+        <span style={{ fontSize: '9px', fontWeight: 800, color: '#7C5CFF', textTransform: 'uppercase', letterSpacing: '0.09em', lineHeight: 1.3 }}>
+          Full Stack<br />Developer
+        </span>
+      </div>
+
+      {/* Quote 1 */}
+      <div style={{
+        fontSize: '12px', fontWeight: 700, color: '#1a1a2e',
+        lineHeight: 1.45, marginBottom: '8px',
+        paddingLeft: '8px',
+        borderLeft: '2px solid #EDE9FF',
+      }}>
+        "Building smarter<br />solutions every day."
+      </div>
+
+      {/* Divider */}
+      <div style={{
+        height: '1px',
+        background: 'linear-gradient(to right, #EDE9FF, transparent)',
+        margin: '8px 0',
+      }} />
+      
+      
+      {/* Footer dot row */}
+      <div style={{ display: 'flex', gap: '4px', marginTop: '10px', alignItems: 'center' }}>
+        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#7C5CFF' }} />
+        <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#A78BFA' }} />
+        <div style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#DDD6FE' }} />
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -99,14 +139,6 @@ export default function Contact() {
           from { opacity: 0; transform: translateX(24px); }
           to   { opacity: 1; transform: translateX(0); }
         }
-        @keyframes floatGirl {
-          0%,100% { transform: translateY(0px) scale(1); }
-          50%      { transform: translateY(-14px) scale(1.01); }
-        }
-        @keyframes glowPulse {
-          0%,100% { box-shadow: 0 0 0 0 rgba(124,92,255,0); }
-          50%      { box-shadow: 0 0 32px 8px rgba(124,92,255,0.18); }
-        }
         @keyframes sparkle {
           0%,100% { opacity:0.3; transform: scale(0.8) rotate(0deg); }
           50%      { opacity:1;   transform: scale(1.3) rotate(180deg); }
@@ -116,8 +148,10 @@ export default function Contact() {
           30%      { transform: scale(1.18); }
           60%      { transform: scale(0.94); }
         }
-        .girl-float { animation: floatGirl 4.5s ease-in-out infinite; }
-        .glow-card  { animation: glowPulse 3s ease-in-out infinite; }
+        @keyframes quoteSlide {
+          from { opacity: 0; transform: translateY(-10px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
         .wa-btn:hover { animation: waBounce 0.5s ease; }
         .sparkle1 { animation: sparkle 2.8s ease-in-out infinite; }
         .sparkle2 { animation: sparkle 3.4s ease-in-out 0.6s infinite; }
@@ -127,7 +161,7 @@ export default function Contact() {
       `}</style>
 
       {/* ══════════════════════════════════════════
-          DESKTOP  (lg and above)
+          DESKTOP
       ══════════════════════════════════════════ */}
       <section className="hidden lg:flex w-full h-full bg-[#F8F9FC] dark:bg-zinc-950 overflow-y-auto p-8 pb-12 box-border transition-colors duration-500 contact-viewport-container">
         <div style={{ display: 'grid', gridTemplateColumns: '30% 1fr', gap: '28px', width: '100%', alignItems: 'start' }}>
@@ -213,16 +247,15 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-
           </div>
 
           {/* ── RIGHT ── */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
 
-            {/* Form + Giant Girl card */}
+            {/* Form + Girl card */}
             <div
               className="bg-white dark:bg-zinc-900 border border-[#EDEDF5] dark:border-zinc-800 rounded-[24px] overflow-hidden"
-              style={{ display: 'grid', gridTemplateColumns: '1fr 38%', boxShadow: '0 4px 32px rgba(124,92,255,0.07)', animation: 'fadeRight 0.5s ease 0.2s both' }}
+              style={{ display: 'grid', gridTemplateColumns: '1fr 36%', boxShadow: '0 4px 32px rgba(124,92,255,0.07)', animation: 'fadeRight 0.5s ease 0.2s both' }}
             >
               {/* Form */}
               <div className="p-8">
@@ -286,19 +319,39 @@ export default function Contact() {
                 </form>
               </div>
 
-              {/* Girl illustration — large + floating */}
-              <div className="relative flex items-end justify-center overflow-hidden"
-                style={{ background: 'linear-gradient(160deg, #f5f3ff 0%, #ede9fe 60%, #ddd6fe 100%)' }}>
+              {/* ── Girl illustration panel ── */}
+              <div
+                className="relative flex items-end justify-center overflow-hidden"
+                style={{
+                  background: 'linear-gradient(160deg, #f5f3ff 0%, #ede9fe 60%, #ddd6fe 100%)',
+                  /* paddingBottom gives the photo room above the base */
+                  paddingBottom: '28px',
+                }}
+              >
+                {/* Dot pattern */}
                 <div className="absolute inset-0 pointer-events-none"
-                  style={{ backgroundImage: 'radial-gradient(circle, rgba(124,92,255,0.12) 1px, transparent 1px)', backgroundSize: '18px 18px' }} />
+                  style={{ backgroundImage: 'radial-gradient(rgba(124,92,255,0.12) 1px, transparent 1px)', backgroundSize: '18px 18px' }} />
+
+                {/* Sparkles */}
                 <span className="sparkle1 absolute top-8 right-8 text-[#7C5CFF] text-2xl select-none pointer-events-none">✦</span>
-                <span className="sparkle2 absolute top-1/3 left-5 text-purple-300 text-lg select-none pointer-events-none">✦</span>
-                <span className="sparkle3 absolute bottom-28 right-5 text-indigo-300 text-base select-none pointer-events-none">✦</span>
-                <div className="glow-card absolute bottom-0 left-1/2 rounded-full pointer-events-none"
-                  style={{ width: '260px', height: '260px', transform: 'translateX(-50%)', background: 'radial-gradient(ellipse, rgba(124,92,255,0.18) 0%, transparent 70%)' }} />
-                <img src={contactGirlImg} alt="Contact Illustration"
-                  className="girl-float relative z-10 object-contain select-none"
-                  style={{ height: '400px', maxHeight: '90%', width: 'auto', filter: 'drop-shadow(0 20px 40px rgba(60,20,120,0.35))' }} />
+                <span className="sparkle2 absolute top-1/3 right-5 text-purple-300 text-lg select-none pointer-events-none">✦</span>
+                <span className="sparkle3 absolute bottom-1/3 right-6 text-indigo-300 text-base select-none pointer-events-none">✦</span>
+
+                {/* ── SINGLE combined quote card — top-left ── */}
+                <QuoteCard />
+
+                {/* Photo — lifted via paddingBottom on parent, NOT flush with bottom */}
+                <img
+                  src={contactGirlImg}
+                  alt="Contact Illustration"
+                  className="relative z-10 object-contain select-none"
+                  style={{
+                    height: '290px',
+                    maxHeight: '85%',
+                    width: 'auto',
+                    filter: 'drop-shadow(0 16px 36px rgba(60,20,120,0.30))',
+                  }}
+                />
               </div>
             </div>
 
@@ -315,11 +368,11 @@ export default function Contact() {
                   </p>
                 </div>
               </div>
-              <div className="bg-white dark:bg-zinc-900 border border-[#EDEDF5] dark:border-zinc-800 p-5 rounded-[22px] flex items-start gap-4 relative overflow-hidden hover:shadow-md transition-shadow duration-300">
+              <div className="bg-white dark:bg-zinc-900 border border-[#EDEDF5] dark:border-zinc-800 p-5 rounded-[22px] flex items-start gap-4 hover:shadow-md transition-shadow duration-300">
                 <div className="w-[44px] h-[44px] bg-[#EDFAF5] dark:bg-emerald-950/30 text-[#10B981] rounded-xl flex items-center justify-center flex-shrink-0">
                   <Calendar size={18} strokeWidth={2.2} />
                 </div>
-                <div style={{ position: 'relative', zIndex: 2 }}>
+                <div>
                   <h4 className="text-zinc-800 dark:text-zinc-200 m-0 font-bold" style={{ fontSize: '14px' }}>Response Time</h4>
                   <p className="text-zinc-500 dark:text-zinc-400 m-0 mt-2" style={{ fontSize: '12.5px', lineHeight: 1.55 }}>
                     I usually respond within <span className="text-emerald-500 font-bold">24 hours</span>. Let's build something amazing!
@@ -336,7 +389,7 @@ export default function Contact() {
       </section>
 
       {/* ══════════════════════════════════════════
-          MOBILE  (below lg)
+          MOBILE
       ══════════════════════════════════════════ */}
       <div className="lg:hidden bg-[#F8F9FC] dark:bg-black flex flex-col h-full overflow-y-auto relative transition-colors duration-500 contact-mobile-container">
 
@@ -359,38 +412,69 @@ export default function Contact() {
           </a>
         </div>
 
-        {/* ── MOBILE GIRL STRIP — bigger image ── */}
+        {/* ── MOBILE GIRL STRIP ── */}
         <div
           className="relative mx-5 mt-5 rounded-2xl overflow-hidden flex items-end justify-center"
           style={{
-            height: '480px',
+            height: '340px',
             background: 'linear-gradient(160deg, #f5f3ff 0%, #ddd6fe 100%)',
             animation: 'fadeUp 0.5s ease 0.2s both',
+            paddingBottom: '20px',      /* lifts photo above bottom edge */
           }}
         >
-          {/* Dot pattern */}
           <div className="absolute inset-0 pointer-events-none"
             style={{ backgroundImage: 'radial-gradient(circle, rgba(124,92,255,0.1) 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
 
-          {/* Sparkles */}
           <span className="sparkle1 absolute top-4 right-6 text-[#7C5CFF] text-xl select-none pointer-events-none">✦</span>
-          <span className="sparkle2 absolute top-1/2 left-4 text-purple-300 text-base select-none pointer-events-none">✦</span>
-          <span className="sparkle3 absolute bottom-16 right-4 text-indigo-300 text-sm select-none pointer-events-none">✦</span>
+          <span className="sparkle2 absolute top-1/2 right-4 text-purple-300 text-base select-none pointer-events-none">✦</span>
+          <span className="sparkle3 absolute bottom-1/3 right-5 text-indigo-300 text-sm select-none pointer-events-none">✦</span>
 
-          {/* Glow ring */}
-          <div className="glow-card absolute bottom-0 left-1/2 rounded-full pointer-events-none"
-            style={{ width: '320px', height: '320px', transform: 'translateX(-50%)', background: 'radial-gradient(ellipse, rgba(124,92,255,0.18) 0%, transparent 70%)' }} />
+          {/* ── Single combined quote card ── */}
+          <div style={{
+            position: 'absolute',
+            top: '16px',
+            left: '16px',
+            zIndex: 20,
+            background: 'rgba(255,255,255,0.93)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRadius: '13px',
+            padding: '12px 14px',
+            boxShadow: '0 5px 20px rgba(124,92,255,0.18)',
+            maxWidth: '185px',
+            border: '1px solid rgba(124,92,255,0.1)',
+            animation: 'quoteSlide 0.6s ease 0.5s both',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '8px' }}>
+              <div style={{ width: '30px', height: '26px', borderRadius: '2px', background: 'linear-gradient(to bottom, #7C5CFF, #A78BFA)', flexShrink: 0 }} />
+              <span style={{ fontSize: '8.5px', fontWeight: 800, color: '#7C5CFF', textTransform: 'uppercase', letterSpacing: '0.09em', lineHeight: 1.3 }}>
+                Full Stack Developer
+              </span>
+            </div>
+            <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#1a1a2e', lineHeight: 1.45, marginBottom: '7px', paddingLeft: '7px', borderLeft: '2px solid #EDE9FF' }}>
+              "Building smarter<br />solutions every day."
+            </div>
+            <div style={{ height: '1px', background: 'linear-gradient(to right, #EDE9FF, transparent)', margin: '7px 0' }} />
+            <div style={{ fontSize: '11px', fontWeight: 700, color: '#4B5563', lineHeight: 1.45, paddingLeft: '7px', borderLeft: '2px solid #DDD6FE' }}>
+              "Learn. Build.<br />Innovate. Repeat."
+            </div>
+            <div style={{ display: 'flex', gap: '4px', marginTop: '8px', alignItems: 'center' }}>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#7C5CFF' }} />
+              <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#A78BFA' }} />
+              <div style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#DDD6FE' }} />
+            </div>
+          </div>
 
-          {/* Girl image — large, centered via flex parent */}
+          {/* Photo lifted via paddingBottom */}
           <img
             src={contactGirlImg}
             alt="Contact Illustration"
-            className="girl-float relative z-10 select-none"
+            className="relative z-10 select-none"
             style={{
-              height: '440px',
+              height: '300px',
               width: 'auto',
               objectFit: 'contain',
-              filter: 'drop-shadow(0 16px 32px rgba(60,20,120,0.35))',
+              filter: 'drop-shadow(0 14px 28px rgba(60,20,120,0.30))',
             }}
           />
         </div>
@@ -407,25 +491,19 @@ export default function Contact() {
           <p className="text-zinc-400 dark:text-zinc-500 mb-4 flex items-center gap-1.5" style={{ fontSize: '11.5px', fontWeight: 500 }}>
             <FaWhatsapp size={11} className="text-green-500" /> Opens WhatsApp — I'll reply fast!
           </p>
-
           {sent && (
             <div className="p-3 mb-4 rounded-xl text-[12px] font-medium border bg-emerald-50 dark:bg-emerald-950/20 border-emerald-100 text-emerald-600 flex items-center gap-2">
               <FaWhatsapp size={13} /> WhatsApp opened! Your message is ready to send.
             </div>
           )}
-
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-            <input type="text" name="name" placeholder="Your Name"
-              value={formData.name} onChange={handleChange} required
+            <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required
               className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-100 p-3 rounded-xl outline-none text-[13px] box-border font-medium focus:border-purple-400 transition-colors" />
-            <input type="email" name="email" placeholder="Your Email (optional)"
-              value={formData.email} onChange={handleChange}
+            <input type="email" name="email" placeholder="Your Email (optional)" value={formData.email} onChange={handleChange}
               className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-100 p-3 rounded-xl outline-none text-[13px] box-border font-medium focus:border-purple-400 transition-colors" />
-            <input type="text" name="subject" placeholder="Subject (optional)"
-              value={formData.subject} onChange={handleChange}
+            <input type="text" name="subject" placeholder="Subject (optional)" value={formData.subject} onChange={handleChange}
               className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-100 p-3 rounded-xl outline-none text-[13px] box-border font-medium focus:border-purple-400 transition-colors" />
-            <textarea name="message" placeholder="Your Message" rows="4"
-              value={formData.message} onChange={handleChange} required
+            <textarea name="message" placeholder="Your Message" rows="4" value={formData.message} onChange={handleChange} required
               className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-100 p-3 rounded-xl outline-none text-[13px] box-border font-medium resize-none focus:border-purple-400 transition-colors" />
             <button type="submit" disabled={sending}
               className="wa-btn w-full flex items-center justify-center gap-2 text-[13px] font-bold py-3.5 rounded-xl border-none cursor-pointer text-white active:scale-95 transition-transform disabled:opacity-60"
@@ -435,11 +513,10 @@ export default function Contact() {
           </form>
         </div>
 
-        {/* Contact detail rows */}
+        {/* Contact rows */}
         <div className="px-5 mb-4 flex flex-col gap-2" style={{ animation: 'fadeUp 0.5s ease 0.4s both' }}>
           {contactDetails.map((d, i) => (
-            <a key={i} href={d.href}
-              target={d.href !== '#' ? '_blank' : '_self'} rel="noopener noreferrer"
+            <a key={i} href={d.href} target={d.href !== '#' ? '_blank' : '_self'} rel="noopener noreferrer"
               className="contact-detail-row flex items-center justify-between p-3 rounded-xl bg-white dark:bg-zinc-900 border border-[#EDEDF5] dark:border-zinc-800 no-underline shadow-sm hover:border-purple-200 transition-all">
               <div className="flex items-center gap-3">
                 <div className="bg-[#F5F3FF] dark:bg-purple-950/40 text-[#7C5CFF] dark:text-purple-400 flex items-center justify-center w-8 h-8 rounded-lg flex-shrink-0">
@@ -473,21 +550,19 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Social row */}
+        {/* Social */}
         <div className="px-5 mb-6 flex gap-3" style={{ animation: 'fadeUp 0.5s ease 0.6s both' }}>
           {socialLinks.map((s, i) => (
             <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" title={s.label}
-              className="w-10 h-10 rounded-xl bg-white dark:bg-zinc-900 border border-[#EDEDF5] dark:border-zinc-700
-                         hover:border-purple-300 flex items-center justify-center transition-all shadow-sm no-underline hover:-translate-y-1">
+              className="w-10 h-10 rounded-xl bg-white dark:bg-zinc-900 border border-[#EDEDF5] dark:border-zinc-700 hover:border-purple-300 flex items-center justify-center transition-all shadow-sm no-underline hover:-translate-y-1">
               {s.label === 'WhatsApp'
                 ? <FaWhatsapp size={17} className="text-green-500" />
-                : <s.icon size={17} className="text-zinc-600 dark:text-zinc-300 hover:text-[#7C5CFF]" />
+                : <s.icon size={17} className="text-zinc-600 dark:text-zinc-300" />
               }
             </a>
           ))}
         </div>
 
-        {/* FAB */}
         <button onClick={scrollToTop}
           className="fixed bottom-5 right-5 bg-[#7C5CFF] text-white p-3 rounded-full border-none shadow-lg shadow-purple-500/30 active:scale-95 transition-transform cursor-pointer flex items-center justify-center z-50">
           <ArrowUp size={16} strokeWidth={2.5} />

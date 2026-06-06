@@ -46,14 +46,14 @@ const certificatesData = [
     date: 'Jan – Apr 2024',
     desc: 'Completed the course with a focus on IoT concepts, architecture and applications.',
     image: nptelImg,
-    badge: '96%',
+    badge: '90%',
     badgeBg: '#F5F3FF',
     badgeColor: '#7C5CFF',
     verifyUrl: '/nptel.pdf' 
   },
   {
     id: 'guvi-python',
-    title: 'GUVI – Python Programming',
+    title: 'GUVI – HTML & CSS',
     issuer: 'GUVI / HCL',
     date: 'Apr 2023',
     desc: 'Completed Python programming course covering fundamentals to advanced topics.',

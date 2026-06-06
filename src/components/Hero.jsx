@@ -104,16 +104,11 @@ function MobileSocialRow({ href, icon, label, sub, isEmail }) {
 }
 
 /* ══════════════════════════════════════════
-   DESKTOP — Left Panel (unchanged)
+   DESKTOP — Left Panel
 ══════════════════════════════════════════ */
 function LeftPanel({ onNavigate }) {
-  const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = RESUME_PATH;
-    link.download = 'Selvakumari_K_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleViewResume = () => {
+    window.open(RESUME_PATH, '_blank');
   };
 
   return (
@@ -121,17 +116,23 @@ function LeftPanel({ onNavigate }) {
       className="flex flex-col justify-center h-full px-10 lg:px-14"
       style={{ animation: 'fadeInLeft 0.6s ease both' }}
     >
-      {/* Badge */}
+      {/* Badge — green pulse dot + bigger text */}
       <div
-        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
-                    bg-purple-50 dark:bg-purple-900/30
-                    border border-purple-200/70 dark:border-purple-700/50
-                    text-[#7C5CFF] dark:text-purple-300 text-[13px] font-medium
-                    w-fit mb-6"
+        className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full
+                   bg-purple-50 dark:bg-purple-900/30
+                   border border-purple-200/70 dark:border-purple-700/50
+                   text-[#7C5CFF] dark:text-purple-300 text-[14px] font-semibold
+                   w-fit mb-6"
         style={{ animation: 'fadeUp 0.5s ease 0.15s both' }}
       >
-        <span className="w-2 h-2 rounded-full bg-[#43ea26] dark:bg-purple-400 animate-pulse" />
-        Welcome to my portfolio
+        {/* Green pulse dot */}
+        <span className="relative flex h-3 w-3 shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full
+                           rounded-full bg-emerald-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-3 w-3
+                           bg-emerald-500" />
+        </span>
+        Get to Know Me
       </div>
 
       {/* Heading */}
@@ -154,20 +155,21 @@ function LeftPanel({ onNavigate }) {
 
       {/* Subtitle */}
       <p
-        className="text-[17px] lg:text-[19px] font-semibold text-slate-700 dark:text-slate-200 mb-4"
+        className="text-[16px] lg:text-[18px] font-semibold text-slate-700 dark:text-slate-200 mb-4"
         style={{ animation: 'fadeUp 0.5s ease 0.35s both' }}
       >
-        Aspiring{' '}
+        B.Tech AI &amp; Data Science ·{' '}
         <span className="text-[#7C5CFF] dark:text-purple-300">Full Stack Developer</span>
       </p>
 
       {/* Description */}
       <p
-        className="text-[14.5px] text-slate-500 dark:text-slate-400 leading-[1.75] mb-7 max-w-[400px]"
+        className="text-[14.5px] text-slate-500 dark:text-slate-400 leading-[1.8] mb-7 max-w-[420px]"
         style={{ animation: 'fadeUp 0.5s ease 0.5s both' }}
       >
-        I build real-world web applications using MERN stack and love integrating
-        AI to create smart solutions.
+        I'm Selvakumari K — a Full Stack Developer who believes great web apps are built
+        with logic, creativity and heart. I craft MERN Stack + AI powered solutions —
+        taking every idea from concept to a real, working product.
       </p>
 
       {/* Buttons */}
@@ -179,19 +181,19 @@ function LeftPanel({ onNavigate }) {
                      hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(124,92,255,0.45)]
                      transition-all duration-200"
         >
-          View My Work
+          View My Projects
           <ArrowRight size={16} strokeWidth={2.5} />
         </button>
 
         <button
-          onClick={handleDownloadResume}
+          onClick={handleViewResume}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-xl
                      border-2 border-[#7C5CFF]/30 dark:border-purple-500/40
                      text-[#7C5CFF] dark:text-purple-300 text-[14px] font-bold
                      hover:bg-purple-50 dark:hover:bg-purple-900/20
                      hover:-translate-y-0.5 transition-all duration-200"
         >
-          Download Resume
+          View Resume
           <Download size={15} strokeWidth={2.5} />
         </button>
       </div>
@@ -226,7 +228,6 @@ function RightPanel({ onNavigate }) {
         animation: 'fadeInRight 0.6s ease both',
       }}
     >
-      {/* Halftone dot pattern top-right */}
       <div
         className="absolute top-0 right-0 w-[60%] h-[60%] pointer-events-none"
         style={{
@@ -235,55 +236,28 @@ function RightPanel({ onNavigate }) {
           opacity: 0.4,
         }}
       />
-
-      {/* Radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 40% 35%, rgba(255,255,255,0.14) 0%, transparent 65%)' }}
       />
-
-      {/* Geometric diamond outlines */}
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
-        <svg
-          width="55%" height="100%"
-          viewBox="0 0 300 660"
-          preserveAspectRatio="xMidYMax meet"
-          className="absolute bottom-0 left-0"
-        >
+        <svg width="55%" height="100%" viewBox="0 0 300 660" preserveAspectRatio="xMidYMax meet" className="absolute bottom-0 left-0">
           <polygon points="150,50 280,200 280,590 20,590 20,200" fill="none" stroke="rgba(255,255,255,0.20)" strokeWidth="1.5" />
           <polygon points="150,78 258,218 258,568 42,568 42,218" fill="none" stroke="rgba(255,255,255,0.11)" strokeWidth="1" />
         </svg>
       </div>
-
-      {/* Diagonal accent lines */}
       <div className="absolute bottom-24 left-0 flex flex-col gap-2.5 pointer-events-none" style={{ zIndex: 1 }}>
         {[70, 50, 35].map((w, i) => (
           <div key={i} className="h-[3px] rounded-full bg-white" style={{ width: `${w}px`, opacity: 0.35 - i * 0.08 }} />
         ))}
       </div>
-
-      {/* Sparkle */}
-      <div
-        className="absolute bottom-8 left-10 text-white/60 text-2xl pointer-events-none select-none"
-        style={{ zIndex: 2, animation: 'floatSparkle 3s ease-in-out infinite' }}
-      >✦</div>
-
-      {/* Girl image */}
+      <div className="absolute bottom-8 left-10 text-white/60 text-2xl pointer-events-none select-none"
+        style={{ zIndex: 2, animation: 'floatSparkle 3s ease-in-out infinite' }}>✦</div>
       <img
-        src={girlImg}
-        alt="Selvakumari K"
+        src={girlImg} alt="Selvakumari K"
         className="absolute bottom-0 object-contain pointer-events-none select-none"
-        style={{
-          left: '-20%',
-          height: '90%',
-          maxHeight: '700px',
-          zIndex: 3,
-          filter: 'drop-shadow(0 24px 48px rgba(60,20,120,0.38))',
-          animation: 'floatY 5s ease-in-out infinite',
-        }}
+        style={{ left: '-20%', height: '90%', maxHeight: '700px', zIndex: 3, filter: 'drop-shadow(0 24px 48px rgba(60,20,120,0.38))', animation: 'floatY 5s ease-in-out infinite' }}
       />
-
-      {/* Floating Cards */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 10 }}>
         <CodeCard />
         <TechCard />
@@ -295,17 +269,10 @@ function RightPanel({ onNavigate }) {
 
 /* ══════════════════════════════════════════
    MOBILE — Full stacked layout
-   Order: intro text → purple visual (girl)
-          → about card → social links
 ══════════════════════════════════════════ */
 function MobileHero({ onNavigate }) {
-  const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = RESUME_PATH;
-    link.download = 'Selvakumari_K_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleViewResume = () => {
+    window.open(RESUME_PATH, '_blank');
   };
 
   return (
@@ -319,8 +286,8 @@ function MobileHero({ onNavigate }) {
                         border border-purple-200/70 dark:border-purple-700/50
                         text-[#7C5CFF] dark:text-purple-300 text-[12px] font-medium
                         w-fit mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#43ea26] animate-pulse" />
-          Welcome to my portfolio
+          <span className="text-[14px] leading-none">⚡</span>
+          2026 Graduate · Open to Full-Time Roles
         </div>
 
         {/* Heading */}
@@ -343,20 +310,21 @@ function MobileHero({ onNavigate }) {
 
         {/* Subtitle */}
         <p
-          className="text-[15px] font-semibold text-slate-700 dark:text-slate-200 mb-3"
+          className="text-[14px] font-semibold text-slate-700 dark:text-slate-200 mb-3"
           style={{ animation: 'fadeUp 0.5s ease 0.3s both' }}
         >
-          Aspiring{' '}
+          B.Tech AI &amp; Data Science ·{' '}
           <span className="text-[#7C5CFF] dark:text-purple-300">Full Stack Developer</span>
         </p>
 
         {/* Description */}
         <p
-          className="text-[13.5px] text-slate-500 dark:text-slate-400 leading-[1.75] mb-5"
+          className="text-[13.5px] text-slate-500 dark:text-slate-400 leading-[1.8] mb-5"
           style={{ animation: 'fadeUp 0.5s ease 0.4s both' }}
         >
-          I build real-world web applications using MERN stack and love integrating
-          AI to create smart solutions.
+          I'm Selvakumari K — a Full Stack Developer who believes great web apps are built
+          with logic, creativity and heart. I craft MERN Stack + AI powered solutions —
+          taking every idea from concept to a real, working product.
         </p>
 
         {/* Buttons */}
@@ -369,12 +337,12 @@ function MobileHero({ onNavigate }) {
                        hover:shadow-[0_8px_24px_rgba(124,92,255,0.45)]
                        transition-all duration-200"
           >
-            View My Work
+            View My Projects
             <ArrowRight size={16} strokeWidth={2.5} />
           </button>
 
           <button
-            onClick={handleDownloadResume}
+            onClick={handleViewResume}
             className="w-full inline-flex items-center justify-center gap-2
                        px-6 py-3.5 rounded-xl
                        border-2 border-[#7C5CFF]/30 dark:border-purple-500/40
@@ -382,77 +350,44 @@ function MobileHero({ onNavigate }) {
                        hover:bg-purple-50 dark:hover:bg-purple-900/20
                        transition-all duration-200"
           >
-            Download Resume
+            View Resume
             <Download size={15} strokeWidth={2.5} />
           </button>
         </div>
       </div>
-          {/* ── BLOCK 2: Purple visual with centered girl image ── */}
-          <div
-            className="relative w-full overflow-hidden flex justify-center items-end"
-            style={{
-              minHeight: 360,
-              background: 'linear-gradient(135deg, #7C5CFF 0%, #8B6FFF 50%, #C4B5FD 100%)',
-              animation: 'fadeUp 0.5s ease 0.55s both',
-            }}
-          >
-            {/* Halftone dots */}
-            <div
-              className="absolute top-0 right-0 w-[60%] h-[60%] pointer-events-none"
-              style={{
-                backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.55) 1.2px, transparent 1.2px)',
-                backgroundSize: '14px 14px',
-                opacity: 0.4,
-              }}
-            />
 
-            {/* Radial glow */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.16) 0%, transparent 65%)' }}
-            />
-
-            {/* Geometric outline */}
-            <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
-              <svg
-                width="70%" height="100%"
-                viewBox="0 0 300 420"
-                preserveAspectRatio="xMidYMax meet"
-                className="absolute bottom-0 left-1/2 -translate-x-1/2"
-              >
-                <polygon points="150,30 272,148 272,400 28,400 28,148" fill="none" stroke="rgba(255,255,255,0.20)" strokeWidth="1.5" />
-                <polygon points="150,56 250,165 250,378 50,378 50,165" fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth="1" />
-              </svg>
-            </div>
-
-            {/* Diagonal accent lines — bottom-left */}
-            <div className="absolute bottom-16 left-0 flex flex-col gap-2 pointer-events-none" style={{ zIndex: 1 }}>
-              {[60, 42, 28].map((w, i) => (
-                <div key={i} className="h-[3px] rounded-full bg-white"
-                  style={{ width: `${w}px`, opacity: 0.35 - i * 0.08 }} />
-              ))}
-            </div>
-
-            {/* Sparkle — bottom-right */}
-            <div
-              className="absolute bottom-5 right-5 text-white/60 text-xl pointer-events-none select-none"
-              style={{ zIndex: 2, animation: 'floatSparkle 3s ease-in-out infinite' }}
-            >✦</div>
-
-            {/* Girl image — Cleanly Centered via Parent Flexbox */}
-            <img
-              src={girlImg}
-              alt="Selvakumari K"
-              className="relative max-w-full bottom-0 object-contain object-bottom pointer-events-none select-none"
-              style={{
-                height: '92%',
-                maxHeight: '350px',
-                zIndex: 3,
-                filter: 'drop-shadow(0 18px 36px rgba(60,20,120,0.40))',
-                animation: 'floatY 5s ease-in-out infinite',
-              }}
-            />
-          </div>
+      {/* ── BLOCK 2: Purple visual with centered girl image ── */}
+      <div
+        className="relative w-full overflow-hidden flex justify-center items-end"
+        style={{
+          minHeight: 360,
+          background: 'linear-gradient(135deg, #7C5CFF 0%, #8B6FFF 50%, #C4B5FD 100%)',
+          animation: 'fadeUp 0.5s ease 0.55s both',
+        }}
+      >
+        <div className="absolute top-0 right-0 w-[60%] h-[60%] pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.55) 1.2px, transparent 1.2px)', backgroundSize: '14px 14px', opacity: 0.4 }} />
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.16) 0%, transparent 65%)' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+          <svg width="70%" height="100%" viewBox="0 0 300 420" preserveAspectRatio="xMidYMax meet" className="absolute bottom-0 left-1/2 -translate-x-1/2">
+            <polygon points="150,30 272,148 272,400 28,400 28,148" fill="none" stroke="rgba(255,255,255,0.20)" strokeWidth="1.5" />
+            <polygon points="150,56 250,165 250,378 50,378 50,165" fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth="1" />
+          </svg>
+        </div>
+        <div className="absolute bottom-16 left-0 flex flex-col gap-2 pointer-events-none" style={{ zIndex: 1 }}>
+          {[60, 42, 28].map((w, i) => (
+            <div key={i} className="h-[3px] rounded-full bg-white" style={{ width: `${w}px`, opacity: 0.35 - i * 0.08 }} />
+          ))}
+        </div>
+        <div className="absolute bottom-5 right-5 text-white/60 text-xl pointer-events-none select-none"
+          style={{ zIndex: 2, animation: 'floatSparkle 3s ease-in-out infinite' }}>✦</div>
+        <img
+          src={girlImg} alt="Selvakumari K"
+          className="relative max-w-full bottom-0 object-contain object-bottom pointer-events-none select-none"
+          style={{ height: '92%', maxHeight: '350px', zIndex: 3, filter: 'drop-shadow(0 18px 36px rgba(60,20,120,0.40))', animation: 'floatY 5s ease-in-out infinite' }}
+        />
+      </div>
 
       {/* ── BLOCK 3: About Me card ── */}
       <div
@@ -462,11 +397,8 @@ function MobileHero({ onNavigate }) {
                    shadow-[0_4px_24px_rgba(0,0,0,0.07)]"
         style={{ animation: 'fadeUp 0.5s ease 0.65s both' }}
       >
-        {/* Card header */}
         <div className="flex items-center gap-2.5 mb-2.5">
-          <div className="w-7 h-7 rounded-lg
-                          bg-purple-50 dark:bg-purple-900/40
-                          flex items-center justify-center shrink-0">
+          <div className="w-7 h-7 rounded-lg bg-purple-50 dark:bg-purple-900/40 flex items-center justify-center shrink-0">
             <svg width="13" height="13" fill="none" stroke="#7C5CFF" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
               <circle cx="12" cy="7" r="4"/>
@@ -474,15 +406,11 @@ function MobileHero({ onNavigate }) {
           </div>
           <p className="text-[13px] font-bold text-slate-700 dark:text-white">About Me</p>
         </div>
-
-        {/* Card body */}
         <p className="text-[12.5px] text-slate-500 dark:text-slate-400 leading-[1.7] mb-3.5">
-          I'm a final-year B.Tech AI &amp; Data Science student passionate about web
+          I'm 2026 Graduate in B.Tech AI &amp; Data Science student passionate about web
           development. I enjoy building full stack applications and exploring AI
           integration to solve real-world problems.
         </p>
-
-        {/* Card button + sparkle row */}
         <div className="flex items-center justify-between">
           <button
             onClick={() => onNavigate?.('About')}
@@ -505,30 +433,14 @@ function MobileHero({ onNavigate }) {
         className="flex flex-col gap-2.5 px-5 mt-5 mb-6"
         style={{ animation: 'fadeUp 0.5s ease 0.8s both' }}
       >
-        <MobileSocialRow
-          href={GITHUB_URL}
-          icon={<GithubIcon size={17} />}
-          label="GitHub"
-          sub="@SELVAKUMARI-737"
-        />
-        <MobileSocialRow
-          href={LINKEDIN_URL}
-          icon={<LinkedinIcon size={17} />}
-          label="LinkedIn"
-          sub="selvakumari-sk"
-        />
-        <MobileSocialRow
-          href={EMAIL}
-          icon={<Mail size={17} />}
-          label="Email"
-          sub="kselvakumari737@gmail.com"
-          isEmail
-        />
+        <MobileSocialRow href={GITHUB_URL} icon={<GithubIcon size={17} />} label="GitHub" sub="@SELVAKUMARI-737" />
+        <MobileSocialRow href={LINKEDIN_URL} icon={<LinkedinIcon size={17} />} label="LinkedIn" sub="selvakumari-sk" />
+        <MobileSocialRow href={EMAIL} icon={<Mail size={17} />} label="Email" sub="kselvakumari737@gmail.com" isEmail />
       </div>
 
       {/* Footer */}
       <p className="text-center text-[11px] text-slate-400 dark:text-slate-600 pb-6">
-        © 2024{' '}
+        © 2026{' '}
         <span className="text-[#7C5CFF] font-medium">Selvakumari K</span>.
         {' '}All rights reserved.
       </p>

@@ -312,10 +312,8 @@ function AboutCardContent({ onNavigate, mobile }) {
           About Me
         </p>
       </div>
-      <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: mobile ? 10 : 11, lineHeight: 1.65, marginBottom: 10 }}>
-        I'm a final-year B.Tech AI &amp; Data Science student passionate about web
-        development. I enjoy building full stack applications and exploring AI
-        integration to solve real-world problems.
+      <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: mobile ? 10 : 11, lineHeight: 1.65, marginBottom: 10, textAlign: 'justify' }}>
+        I'm a 2026 B.Tech AI & Data Science graduate. I enjoy building full stack applications and exploring AI integration to solve real-world problems.
       </p>
       <button
         onClick={() => onNavigate?.('About')}

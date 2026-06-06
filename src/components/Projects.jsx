@@ -9,6 +9,7 @@ import {
   ChevronDown, CheckCircle2, Rocket, Sparkles,
   Server, Database, Shield, Wrench, Cloud, Lock
 } from 'lucide-react';
+import { CloudSun, MapPin } from "lucide-react";
 
 /* ── Brand Tech Logos ── */
 import {
@@ -40,12 +41,13 @@ import {
 import expenseImg from '../assets/expense.png';
 import campusImg from '../assets/campus.png';
 import carImg from '../assets/car.png';
-
+import TaskImg from '../assets/Task.png'
+import weatherImg from '../assets/weather.png'
 /* ─────────────────────────────────────────────────────────────────────────────
    DATA CONFIGURATIONS
 ───────────────────────────────────────────────────────────────────────────── */
 const stats = [
-  { icon: Folder,   count: '03+',      label: 'Projects',  bg: '#F5F3FF', color: '#7C5CFF' },
+  { icon: Folder,   count: '05+',      label: 'Projects',  bg: '#F5F3FF', color: '#7C5CFF' },
   { icon: Code2,    count: 'MERN',     label: 'Stack',     bg: '#F3EEFF', color: '#8B5CF6' },
   { icon: Cpu,      count: 'REST APIs',label: 'Built',     bg: '#EBF3FF', color: '#3B82F6' },
   { icon: Globe,    count: 'Deployed',  label: 'Live',      bg: '#EDFAF5', color: '#10B981' }
@@ -68,7 +70,7 @@ const projectsData = [
       { icon: Sparkles,      color: '#5A29E4', label: 'Groq API',      chipBg: '#F0EDFF', isLucide: true }
     ],
     liveUrl: '#',
-    githubUrl: '#'
+    githubUrl: 'https://github.com/SELVAKUMARI-737/finly'
   },
   {
     id: 'campus-event',
@@ -86,8 +88,8 @@ const projectsData = [
       { icon: DiBootstrap,   color: '#7952B3', label: 'Bootstrap',     chipBg: '#F3EEFF' },
       { icon: Cpu,           color: '#3B82F6', label: 'REST APIs',     chipBg: '#EBF3FF', isLucide: true }
     ],
-    liveUrl: '#',
-    githubUrl: '#'
+    liveUrl: 'https://campus-event-manager.netlify.app/',
+    githubUrl: 'https://github.com/SELVAKUMARI-737/campus-event-management'
   },
   {
     id: 'car-booking',
@@ -104,9 +106,42 @@ const projectsData = [
       { icon: Cpu,           color: '#3B82F6', label: 'REST APIs',     chipBg: '#EBF3FF', isLucide: true },
       { icon: SiPostman,     color: '#FF6C37', label: 'Postman',       chipBg: '#FEF2EE' }
     ],
-    liveUrl: '#',
-    githubUrl: '#'
-  }
+    liveUrl: 'https://rydo-cab.vercel.app/',
+    githubUrl: 'https://github.com/SELVAKUMARI-737/rydo'
+  },
+    {
+    id: 'Task Manager',
+    title: 'Personal Task manager',
+    desc: 'A responsive task management application that enables users to create, update, prioritize, and track tasks, improving productivity and workflow organization.',
+    image: TaskImg,
+    featured: false,
+    tags: [
+            { icon: DiHtml5,       color: '#E34F26', label: 'HTML5',        chipBg: '#FFF1ED' },
+            { icon: SiTailwindcss, color: '#06B6D4', label: 'Tailwind CSS', chipBg: '#ECFEFF' },
+            { icon: DiJavascript1, color: '#F7DF1E', label: 'JavaScript',   chipBg: '#FEFCE8' },
+            { icon: Database,      color: '#10B981', label: 'LocalStorage', chipBg: '#ECFDF5', isLucide: true },
+            
+        
+    ],
+    liveUrl: 'zenmoderoutein.netlify.app',
+    githubUrl: 'https://github.com/SELVAKUMARI-737/day_tracker'
+  },
+  {
+  id: 'Weather App',
+  title: 'Weather Forecast App',
+  desc: 'A responsive weather application that provides real-time weather updates, temperature, humidity, wind speed, and forecast information using a Weather API.',
+  image: weatherImg,
+  featured: false,
+  tags: [
+    { icon: DiHtml5,       color: '#E34F26', label: 'HTML5',        chipBg: '#FFF1ED' },
+    { icon: SiTailwindcss, color: '#06B6D4', label: 'Tailwind CSS', chipBg: '#ECFEFF' },
+    { icon: DiJavascript1, color: '#F7DF1E', label: 'JavaScript',   chipBg: '#FEFCE8' },
+    { icon: CloudSun,      color: '#F59E0B', label: 'Weather API',  chipBg: '#FFFBEB', isLucide: true },
+    { icon: MapPin,        color: '#EF4444', label: 'Location Data', chipBg: '#FEF2F2', isLucide: true }
+  ],
+  liveUrl: 'Yweather-tracking-apps.netlify.app',
+  githubUrl: 'https://github.com/SELVAKUMARI-737/weather_App'
+}
 ];
 
 const techStackSummary = [

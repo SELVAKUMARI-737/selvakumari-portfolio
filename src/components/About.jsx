@@ -1,140 +1,215 @@
 import aboutGirlImg from '../assets/about-girl.png';
 import {
-  User,
-  GraduationCap,
-  MapPin,
-  Heart,
-  Briefcase,
-  Rocket,
-  Code2,
-  Globe,
-  Sparkles,
+  User, GraduationCap, MapPin, Heart,
+  Briefcase, Rocket, Code2, Globe,
+  Sparkles, Download, ArrowRight,
 } from 'lucide-react';
 
 /* ─────────────────────────────────────────
    DATA
 ───────────────────────────────────────── */
 const infoCards = [
-  { icon: User,          label: 'Name',        value: 'Selvakumari K' },
-  { icon: Heart,         label: 'Passion',     value: 'Web Development\nAI Integration' },
-  { icon: GraduationCap, label: 'Education',   value: 'B.Tech Artificial Intelligence & Data Science' },
-  { icon: Briefcase,     label: 'Experience',  value: 'Fresher' },
-  { icon: MapPin,        label: 'Location',    value: 'Chennai,Tamil Nadu, India' },
-  { icon: Rocket,        label: 'Availability',value: 'Open to Opportunities' },
+  {
+    icon: User,
+    label: 'Name',
+    value: 'Selvakumari K',
+  },
+  {
+    icon: Heart,
+    label: 'Passion',
+    value: 'Full Stack Web Development\nAI-Powered Solutions',
+  },
+  {
+    icon: GraduationCap,
+    label: 'Education',
+    value: 'B.Tech AI & Data Science · 2026\nGnanamani College of Technology, Namakkal',
+  },
+  {
+    icon: Briefcase,
+    label: 'Experience',
+    value: 'Entry Level\nOpen to Full-Time Roles',
+  },
+  {
+    icon: MapPin,
+    label: 'Location',
+    value: 'Chennai, Tamil Nadu, India',
+  },
+  {
+    icon: Rocket,
+    label: 'Availability',
+    value: 'Immediately Available\nOpen to Opportunities',
+  },
 ];
 
 const stats = [
-  { icon: Briefcase, count: '3+',  label: 'Projects Completed' },
-  { icon: Code2,     count: '10+', label: 'Technologies Learned' },
-  { icon: Sparkles,  count: '5+',  label: 'Certifications' },
-  { icon: Globe,     count: '∞',   label: 'Learning Always' },
+  { icon: Briefcase, count: '5+',  label: 'Projects Built'  },
+  { icon: Code2,     count: '10+', label: 'Tech Stack'      },
+  { icon: Sparkles,  count: '5+',  label: 'Certifications'  },
+  { icon: Globe,     count: '∞',   label: 'Always Growing'  },
 ];
+
+const RESUME_PATH = '/resume.pdf';
+
+function downloadResume() {
+  const link = document.createElement('a');
+  link.href = RESUME_PATH;
+  link.download = 'Selvakumari_K_Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 /* ─────────────────────────────────────────
    LEFT PANEL
+   Fixes:
+   ✅ wider bio max-w-[600px] — easier to read
+   ✅ all spacing tightened so stats never cut off
+   ✅ flex col with justify-between to fill height
+   ✅ text-left clean reading
+   ✅ font size 15px for bio readability
 ───────────────────────────────────────── */
-function LeftPanel() {
+function LeftPanel({ onNavigate }) {
   return (
     <div
-      className="flex flex-col justify-center h-full px-8 lg:px-12 py-8 overflow-y-auto"
+      className="flex flex-col h-full px-8 lg:px-12 pt-5 pb-5 overflow-y-auto"
       style={{ animation: 'fadeInLeft 0.5s ease both' }}
     >
-      {/* Badge */}
+
+      {/* ── Badge ── */}
       <div
-        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5
+        className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-3
                    bg-purple-50 dark:bg-purple-900/30
                    border border-purple-200/70 dark:border-purple-700/50
-                   text-[#7C5CFF] dark:text-purple-300 text-[13px] font-medium w-fit"
+                   text-[#7C5CFF] dark:text-purple-300 text-[14px] font-semibold w-fit"
         style={{ animation: 'fadeUp 0.45s ease 0.1s both' }}
       >
-        <span className="w-2 h-2 rounded-full bg-[#7C5CFF] dark:bg-purple-400 animate-pulse" />
-        Get to know me
+        <span className="relative flex h-3 w-3 shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
+        </span>
+        Get to Know Me
       </div>
 
-      {/* Title */}
+      {/* ── Title ── */}
       <h2
-        className="text-[38px] sm:text-[44px] font-extrabold leading-tight mb-3"
-        style={{ animation: 'fadeUp 0.45s ease 0.2s both' }}
+        className="text-[40px] lg:text-[46px] font-extrabold leading-tight mb-2"
+        style={{ animation: 'fadeUp 0.45s ease 0.18s both' }}
       >
         <span className="text-slate-800 dark:text-white">About </span>
-        <span
-          style={{
-            background: 'linear-gradient(to right, #7C5CFF, #A78BFA)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}
-        >
-          Me
-        </span>
+        <span style={{
+          background: 'linear-gradient(to right,#7C5CFF,#A78BFA)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}>Me</span>
       </h2>
 
-      {/* Underline rule */}
+      {/* ── Accent rule ── */}
       <div
-        className="w-12 h-[3px] rounded-full bg-gradient-to-r from-[#7C5CFF] to-[#A78BFA] mb-6"
-        style={{ animation: 'fadeUp 0.45s ease 0.25s both' }}
+        className="w-12 h-[3px] rounded-full bg-gradient-to-r from-[#7C5CFF] to-[#A78BFA] mb-4"
+        style={{ animation: 'fadeUp 0.45s ease 0.22s both' }}
       />
 
-      {/* Bio */}
-      <div
-        className="space-y-4 text-[15px] leading-[1.85] text-slate-500 dark:text-slate-400 mb-7"
-        style={{ animation: 'fadeUp 0.45s ease 0.3s both' }}
+      {/* ── Bio — wider + readable ──
+          max-w-[600px] so it uses left panel width
+          text-[15px] line-height 1.85 — easy on eyes
+          text-left — no ugly justify gaps
+      ── */}
+      <p
+        className="text-[15px] leading-[1.85] text-slate-500 dark:text-slate-400
+                   mb-4 max-w-[700px] text-left"
+        style={{ animation: 'fadeUp 0.45s ease 0.28s both' }}
       >
-        <p>
-          I'm{' '}
-          <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">Selvakumari K</span>
-          , a final-year B.Tech AI &amp; Data Science student with a strong passion for{' '}
-          <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">web development</span>
-          . <br /> <span>I enjoy turning ideas into real-world web applications that are simple, beautiful, and
-          user-friendly.</span>
-        </p>
-        <p>
-          I specialise in the{' '}
-          <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">MERN stack</span>{' '}
-          and am currently learning{' '}
-          <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">Django</span>{' '}
-          for backend development.
-        </p>
-        <p>
-          I love exploring{' '}
-          <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">AI tools</span>{' '}
-          and integrating them into web apps to create{' '}
-          <span className="text-emerald-500 dark:text-emerald-400 font-semibold">smart solutions</span>
-          .
-        </p>
+        I'm{' '}
+        <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">
+          Selvakumari K
+        </span>{' '}
+        — a 2026 B.Tech AI &amp; Data Science graduate who believes great products
+        are built by people who communicate clearly, collaborate openly and code
+        with purpose. I specialise in the{' '}
+        <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">
+          MERN Stack
+        </span>{' '}
+        with hands-on{' '}
+        <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">
+          AI integration
+        </span>{' '}
+        — taking every idea from concept to a real, working product. I thrive in
+        teams, adapt fast to new challenges and bring both{' '}
+        <span className="text-emerald-500 dark:text-emerald-400 font-semibold">
+          technical precision
+        </span>{' '}
+        and{' '}
+        <span className="text-emerald-500 dark:text-emerald-400 font-semibold">
+          creative thinking
+        </span>{' '}
+        to everything I build.
+      </p>
+
+      {/* ── CTA Buttons ── */}
+      <div
+        className="flex flex-wrap gap-3 mb-4"
+        style={{ animation: 'fadeUp 0.45s ease 0.34s both' }}
+      >
+        <button
+          onClick={() => onNavigate?.('Skills')}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+                     bg-[#7C5CFF] text-white text-[13.5px] font-bold
+                     hover:-translate-y-0.5
+                     hover:shadow-[0_8px_24px_rgba(124,92,255,0.45)]
+                     transition-all duration-200"
+        >
+          Check My Skills <ArrowRight size={15} strokeWidth={2.5} />
+        </button>
+
+        <button
+          onClick={() => onNavigate?.('Projects')}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+                     border-2 border-[#7C5CFF]/30 dark:border-purple-500/40
+                     text-[#7C5CFF] dark:text-purple-300 text-[13.5px] font-bold
+                     hover:bg-purple-50 dark:hover:bg-purple-900/20
+                     hover:-translate-y-0.5 transition-all duration-200"
+        >
+          View My Projects <ArrowRight size={15} strokeWidth={2.5} />
+        </button>
       </div>
 
-      {/* Info Grid — 2×3 */}
+      {/* ── Info Cards 2×3 ──
+          p-3 compact, text smaller — saves vertical space
+          break-words so college fits without overflow
+      ── */}
       <div
-        className="grid grid-cols-2 gap-3 mb-7"
+        className="grid grid-cols-2 gap-2 mb-4"
         style={{ animation: 'fadeUp 0.5s ease 0.4s both' }}
       >
         {infoCards.map(({ icon: Icon, label, value }) => (
           <div
             key={label}
-            className="flex items-start gap-3 p-3.5 rounded-xl
+            className="flex items-start gap-2.5 p-3 rounded-xl
                        bg-white dark:bg-[#1e293b]
                        border border-slate-100 dark:border-white/5
-                       shadow-[0_2px_12px_rgba(0,0,0,0.05)]
+                       shadow-[0_1px_8px_rgba(0,0,0,0.04)]
                        hover:border-purple-200 dark:hover:border-purple-700/50
-                       hover:shadow-[0_4px_20px_rgba(124,92,255,0.12)]
+                       hover:shadow-[0_4px_16px_rgba(124,92,255,0.10)]
                        transition-all duration-200 group"
           >
-            <span
-              className="mt-0.5 shrink-0 w-8 h-8 rounded-lg flex items-center justify-center
-                         bg-purple-50 dark:bg-purple-900/30
-                         text-[#7C5CFF] dark:text-purple-300
-                         group-hover:bg-purple-100 dark:group-hover:bg-purple-900/50
-                         transition-colors duration-200"
-            >
-              <Icon size={15} strokeWidth={2} />
+            <span className="mt-0.5 shrink-0 w-7 h-7 rounded-lg flex items-center justify-center
+                             bg-purple-50 dark:bg-purple-900/30
+                             text-[#7C5CFF] dark:text-purple-300
+                             group-hover:bg-purple-100 transition-colors duration-200">
+              <Icon size={14} strokeWidth={2} />
             </span>
-            <div className="min-w-0">
-              <p className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-0.5">
+            <div className="min-w-0 flex-1">
+              <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500
+                            uppercase tracking-widest mb-0.5 leading-none">
                 {label}
               </p>
               {value.split('\n').map((line, i) => (
-                <p key={i} className="text-[13px] font-semibold text-slate-700 dark:text-slate-200 leading-snug">
+                <p
+                  key={i}
+                  className="text-[12.5px] font-semibold text-slate-700
+                             dark:text-slate-200 leading-snug break-words"
+                >
                   {line}
                 </p>
               ))}
@@ -143,92 +218,95 @@ function LeftPanel() {
         ))}
       </div>
 
-      {/* Stats Bar */}
+      {/* ── Stats Bar ──
+          Always visible — compact p-3 not p-4
+      ── */}
       <div
-        className="grid grid-cols-4 gap-2 p-4 rounded-2xl
+        className="grid grid-cols-4 p-3 rounded-2xl
                    bg-gradient-to-r from-[#7C5CFF] to-[#A78BFA]
-                   shadow-[0_8px_32px_rgba(124,92,255,0.35)]"
-        style={{ animation: 'fadeUp 0.5s ease 0.55s both' }}
+                   shadow-[0_6px_24px_rgba(124,92,255,0.30)]"
+        style={{ animation: 'fadeUp 0.5s ease 0.5s both' }}
       >
         {stats.map(({ icon: Icon, count, label }, i) => (
           <div
             key={label}
-            className={`flex flex-col items-center text-white text-center
+            className={`flex flex-col items-center text-white text-center px-1
                         ${i < stats.length - 1 ? 'border-r border-white/20' : ''}`}
           >
-            <Icon size={17} strokeWidth={2} className="mb-1 opacity-80" />
-            <span className="text-[20px] font-extrabold leading-none">{count}</span>
-            <span className="text-[10px] font-medium opacity-75 mt-1 leading-tight">{label}</span>
+            <Icon size={15} strokeWidth={2} className="mb-1 opacity-80" />
+            <span className="text-[19px] font-extrabold leading-none">{count}</span>
+            <span className="text-[9.5px] font-medium opacity-75 mt-1 leading-tight">
+              {label}
+            </span>
           </div>
         ))}
       </div>
+
     </div>
   );
 }
 
 /* ─────────────────────────────────────────
-   RIGHT PANEL — FIXED
-   • Girl centered horizontally, flush at bottom
-   • No tech pills
-   • "Open to Work" badge — bold & visible, top-center
-   • Diamond SVG centered around the girl
+   RIGHT PANEL
+   ✅ Girl 92% — no dead space
+   ✅ No glow ring circle
+   ✅ Download Resume overlaps girl — z-20
+   ✅ Open to Work top-center
 ───────────────────────────────────────── */
 function RightPanel() {
   return (
     <div
       className="relative h-full overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #7C5CFF 0%, #8B6FFF 50%, #C4B5FD 100%)',
+        background: 'linear-gradient(135deg,#7C5CFF 0%,#8B6FFF 50%,#C4B5FD 100%)',
         animation: 'fadeInRight 0.55s ease both',
       }}
     >
-      {/* ── Halftone dots top-right ── */}
+      {/* Halftone dots */}
       <div
-        className="absolute top-0 right-0 w-[60%] h-[60%] pointer-events-none"
+        className="absolute top-0 right-0 w-[65%] h-[60%] pointer-events-none"
         style={{
           backgroundImage:
-            'radial-gradient(circle, rgba(255,255,255,0.55) 1.2px, transparent 1.2px)',
+            'radial-gradient(circle,rgba(255,255,255,0.55) 1.2px,transparent 1.2px)',
           backgroundSize: '14px 14px',
-          opacity: 0.45,
+          opacity: 0.4,
         }}
       />
 
-      {/* ── Radial glow ── */}
+      {/* Radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.14) 0%, transparent 65%)',
+            'radial-gradient(ellipse at 50% 30%,rgba(255,255,255,0.14) 0%,transparent 65%)',
         }}
       />
 
-      {/* ── Diamond outlines — centered around girl ── */}
-      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+      {/* Diamond outlines */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ zIndex: 1 }}
+      >
         <svg
-          width="100%"
-          height="100%"
+          width="100%" height="100%"
           viewBox="0 0 420 660"
           preserveAspectRatio="xMidYMax meet"
           className="absolute bottom-0 left-1/2 -translate-x-1/2"
         >
           <polygon
             points="210,50 390,200 390,590 30,590 30,200"
-            fill="none"
-            stroke="rgba(255,255,255,0.22)"
-            strokeWidth="1.5"
+            fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1.5"
           />
           <polygon
-            points="210,78 365,218 365,568 55,568 55,218"
-            fill="none"
-            stroke="rgba(255,255,255,0.12)"
-            strokeWidth="1"
+            points="210,80 365,220 365,568 55,568 55,220"
+            fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="1"
           />
         </svg>
       </div>
 
-      {/* ── Diagonal accent lines bottom-left ── */}
+      {/* Accent lines */}
       <div
-        className="absolute bottom-24 left-0 flex flex-col gap-2.5 pointer-events-none"
+        className="absolute bottom-36 left-0 flex flex-col gap-2.5 pointer-events-none"
         style={{ zIndex: 1 }}
       >
         {[70, 50, 35].map((w, i) => (
@@ -240,47 +318,72 @@ function RightPanel() {
         ))}
       </div>
 
-      {/* ── Floating sparkle ── */}
+      {/* Sparkle */}
       <div
-        className="absolute bottom-8 left-10 text-white/60 text-2xl pointer-events-none select-none"
+        className="absolute bottom-36 left-10 text-white/60 text-2xl
+                   pointer-events-none select-none"
         style={{ zIndex: 2, animation: 'floatSparkle 3s ease-in-out infinite' }}
-      >
-        ✦
-      </div>
+      >✦</div>
 
-      {/* ── "Open to Work" badge — prominent, top center ── */}
+      {/* Open to Work — top center */}
       <div
-        className="absolute top-6 left-1/2 -translate-x-1/2 z-10
-                   flex items-center gap-2.5
-                   px-5 py-2.5 rounded-2xl
-                   bg-white/25 backdrop-blur-md
-                   border-2 border-white/60
-                   shadow-[0_4px_20px_rgba(0,0,0,0.18)]"
-        style={{ animation: 'fadeUp 0.5s ease 0.7s both' }}
+        className="absolute top-5 left-1/2 -translate-x-1/2 z-10
+                   flex items-center gap-2.5 px-5 py-2.5 rounded-2xl
+                   bg-white/25 backdrop-blur-md border-2 border-white/60
+                   shadow-[0_4px_20px_rgba(0,0,0,0.15)] whitespace-nowrap"
+        style={{ animation: 'fadeUp 0.5s ease 0.6s both' }}
       >
         <span className="relative flex h-3 w-3">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+          <span className="animate-ping absolute inline-flex h-full w-full
+                           rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" />
         </span>
-        <span className="text-white font-bold text-[14px] tracking-wide whitespace-nowrap">
+        <span className="text-white font-bold text-[14px] tracking-wide">
           Open to Work
         </span>
       </div>
 
-      {/* ── Girl image — centered, flush bottom ── */}
+      {/* Girl — 92% flush bottom, no dead space */}
       <img
         src={aboutGirlImg}
         alt="Selvakumari K"
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 object-contain
-                   pointer-events-none select-none"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2
+                   object-contain pointer-events-none select-none"
         style={{
-          height: '88%',
+          height: '92%',
           maxHeight: '680px',
           zIndex: 3,
-          filter: 'drop-shadow(0 24px 48px rgba(60,20,120,0.38))',
+          filter: 'drop-shadow(0 24px 48px rgba(60,20,120,0.40))',
           animation: 'floatY 5s ease-in-out infinite',
         }}
       />
+
+      {/* Download Resume — overlaps girl bottom */}
+      <div
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20"
+        style={{ animation: 'fadeUp 0.5s ease 0.85s both' }}
+      >
+        <button
+          onClick={downloadResume}
+          className="inline-flex items-center gap-2.5 px-6 py-3 rounded-2xl
+                     font-bold text-white text-[13.5px] whitespace-nowrap
+                     border-none cursor-pointer
+                     hover:-translate-y-0.5 active:scale-95
+                     transition-all duration-200"
+          style={{
+            background:
+              'linear-gradient(135deg,rgba(255,255,255,0.28) 0%,rgba(255,255,255,0.12) 100%)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            boxShadow:
+              '0 4px 20px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.4)',
+            border: '1.5px solid rgba(255,255,255,0.55)',
+          }}
+        >
+          <Download size={15} strokeWidth={2.5} />
+          Download Resume
+        </button>
+      </div>
     </div>
   );
 }
@@ -288,120 +391,194 @@ function RightPanel() {
 /* ─────────────────────────────────────────
    MOBILE LAYOUT
 ───────────────────────────────────────── */
-function MobileLayout() {
+function MobileLayout({ onNavigate }) {
   return (
     <div className="flex flex-col h-full overflow-y-auto lg:hidden">
-      {/* Purple header strip */}
+
+      {/* Purple image strip */}
       <div
-        className="relative shrink-0 h-[280px] overflow-hidden"
+        className="relative shrink-0 overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #7C5CFF 0%, #8B6FFF 50%, #C4B5FD 100%)',
+          height: '300px',
+          background: 'linear-gradient(135deg,#7C5CFF 0%,#8B6FFF 50%,#C4B5FD 100%)',
         }}
       >
-        {/* dots */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              'radial-gradient(circle, rgba(255,255,255,0.45) 1.2px, transparent 1.2px)',
+              'radial-gradient(circle,rgba(255,255,255,0.45) 1.2px,transparent 1.2px)',
             backgroundSize: '14px 14px',
             opacity: 0.3,
           }}
         />
 
-        {/* Open to Work — mobile */}
-        <div className="absolute top-5 left-1/2 -translate-x-1/2 flex items-center gap-2
-                        px-4 py-2 rounded-2xl bg-white/25 backdrop-blur-sm
-                        border-2 border-white/60 shadow-md z-10">
+        {/* Open to Work */}
+        <div
+          className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2
+                     px-4 py-2 rounded-2xl bg-white/25 backdrop-blur-sm
+                     border-2 border-white/60 shadow-md z-10 whitespace-nowrap"
+        >
           <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="animate-ping absolute inline-flex h-full w-full
+                             rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
           </span>
-          <span className="text-white font-bold text-[13px] whitespace-nowrap">Open to Work</span>
+          <span className="text-white font-bold text-[13px]">Open to Work</span>
         </div>
 
-        {/* Girl — centered */}
+        {/* Girl */}
         <img
           src={aboutGirlImg}
           alt="Selvakumari K"
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[260px] object-contain
-                     pointer-events-none select-none"
-          style={{ filter: 'drop-shadow(0 12px 24px rgba(60,20,120,0.4))', zIndex: 3 }}
+          className="absolute bottom-0 left-1/2 -translate-x-1/2
+                     object-contain pointer-events-none select-none"
+          style={{
+            height: '275px',
+            filter: 'drop-shadow(0 12px 24px rgba(60,20,120,0.4))',
+            zIndex: 3,
+            animation: 'floatYMobile 5s ease-in-out infinite',
+          }}
         />
 
-        {/* sparkle */}
         <div
-          className="absolute bottom-4 left-6 text-white/60 text-xl select-none"
-          style={{ animation: 'floatSparkle 3s ease-in-out infinite' }}
-        >
-          ✦
+          className="absolute bottom-3 left-5 text-white/60 text-xl
+                     select-none pointer-events-none"
+          style={{ animation: 'floatSparkle 3s ease-in-out infinite', zIndex: 2 }}
+        >✦</div>
+
+        {/* Download Resume */}
+        <div className="absolute bottom-4 right-4 z-20">
+          <button
+            onClick={downloadResume}
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl
+                       text-white font-bold text-[12px] whitespace-nowrap
+                       active:scale-95 transition-all duration-200 cursor-pointer"
+            style={{
+              background: 'rgba(255,255,255,0.2)',
+              backdropFilter: 'blur(12px)',
+              boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
+              border: '1.5px solid rgba(255,255,255,0.5)',
+            }}
+          >
+            <Download size={13} strokeWidth={2.5} /> Download Resume
+          </button>
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex flex-col px-5 pt-7 pb-8 gap-6 bg-[#F8F9FC] dark:bg-[#0f172a]">
-        {/* Badge + Title */}
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4
-                          bg-purple-50 dark:bg-purple-900/30
-                          border border-purple-200/70 dark:border-purple-700/50
-                          text-[#7C5CFF] dark:text-purple-300 text-[12px] font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFF] animate-pulse" />
-            Get to know me
-          </div>
-          <h2 className="text-[32px] font-extrabold leading-tight mb-2">
-            <span className="text-slate-800 dark:text-white">About </span>
-            <span
-              style={{
-                background: 'linear-gradient(to right, #7C5CFF, #A78BFA)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              Me
-            </span>
-          </h2>
-          <div className="w-10 h-[3px] rounded-full bg-gradient-to-r from-[#7C5CFF] to-[#A78BFA] mb-5" />
-          <div className="space-y-3 text-[14px] leading-[1.8] text-slate-500 dark:text-slate-400">
-            <p>
-              I'm{' '}
-              <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">Selvakumari K</span>
-              , a final-year B.Tech AI &amp; Data Science student passionate about{' '}
-              <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">web development</span>.
-            </p>
-            <p>
-              Specialising in the{' '}
-              <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">MERN stack</span>{' '}
-              and learning{' '}
-              <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">Django</span>
-              . I love integrating{' '}
-              <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">AI tools</span>{' '}
-              to build{' '}
-              <span className="text-emerald-500 dark:text-emerald-400 font-semibold">smart solutions</span>.
-            </p>
-          </div>
+      <div className="flex flex-col px-5 pt-5 pb-8 gap-4
+                      bg-[#F8F9FC] dark:bg-[#0f172a]">
+
+        {/* Badge */}
+        <div
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full
+                     bg-purple-50 dark:bg-purple-900/30
+                     border border-purple-200/70 dark:border-purple-700/50
+                     text-[#7C5CFF] dark:text-purple-300 text-[13px] font-semibold w-fit"
+        >
+          <span className="relative flex h-2.5 w-2.5 shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full
+                             rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+          </span>
+          Get to Know Me
         </div>
 
-        {/* Info Grid */}
-        <div className="grid grid-cols-2 gap-2.5">
+        {/* Title */}
+        <div>
+          <h2 className="text-[28px] font-extrabold leading-tight mb-2">
+            <span className="text-slate-800 dark:text-white">About </span>
+            <span style={{
+              background: 'linear-gradient(to right,#7C5CFF,#A78BFA)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>Me</span>
+          </h2>
+          <div className="w-10 h-[3px] rounded-full bg-gradient-to-r
+                          from-[#7C5CFF] to-[#A78BFA]" />
+        </div>
+
+        {/* Bio */}
+        <p className="text-[13.5px] leading-[1.8] text-slate-500
+                      dark:text-slate-400 text-left">
+          I'm{' '}
+          <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">
+            Selvakumari K
+          </span>{' '}
+          — a 2026 B.Tech AI &amp; Data Science graduate who believes great
+          products are built by people who communicate clearly, collaborate openly
+          and code with purpose. I specialise in the{' '}
+          <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">
+            MERN Stack
+          </span>{' '}
+          with hands-on{' '}
+          <span className="text-[#7C5CFF] dark:text-purple-300 font-semibold">
+            AI integration
+          </span>{' '}
+          and bring both{' '}
+          <span className="text-emerald-500 dark:text-emerald-400 font-semibold">
+            technical precision
+          </span>{' '}
+          and{' '}
+          <span className="text-emerald-500 dark:text-emerald-400 font-semibold">
+            creative thinking
+          </span>{' '}
+          to everything I build.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex gap-2.5">
+          <button
+            onClick={() => onNavigate?.('Skills')}
+            className="flex-1 inline-flex items-center justify-center gap-2
+                       px-4 py-2.5 rounded-xl bg-[#7C5CFF] text-white
+                       text-[12.5px] font-bold active:scale-95
+                       transition-all duration-200"
+          >
+            My Skills <ArrowRight size={13} strokeWidth={2.5} />
+          </button>
+          <button
+            onClick={() => onNavigate?.('Projects')}
+            className="flex-1 inline-flex items-center justify-center gap-2
+                       px-4 py-2.5 rounded-xl
+                       border-2 border-[#7C5CFF]/30 dark:border-purple-500/40
+                       text-[#7C5CFF] dark:text-purple-300 text-[12.5px] font-bold
+                       hover:bg-purple-50 dark:hover:bg-purple-900/20
+                       active:scale-95 transition-all duration-200"
+          >
+            Projects <ArrowRight size={13} strokeWidth={2.5} />
+          </button>
+        </div>
+
+        {/* Info Cards */}
+        <div className="grid grid-cols-2 gap-2">
           {infoCards.map(({ icon: Icon, label, value }) => (
             <div
               key={label}
-              className="flex items-start gap-2.5 p-3 rounded-xl
+              className="flex items-start gap-2 p-2.5 rounded-xl
                          bg-white dark:bg-[#1e293b]
-                         border border-slate-100 dark:border-white/5 shadow-sm"
+                         border border-slate-100 dark:border-white/5 shadow-sm
+                         hover:border-purple-200 dark:hover:border-purple-700/40
+                         transition-all duration-150"
             >
-              <span className="mt-0.5 shrink-0 w-7 h-7 rounded-lg flex items-center justify-center
-                               bg-purple-50 dark:bg-purple-900/30 text-[#7C5CFF] dark:text-purple-300">
-                <Icon size={13} strokeWidth={2} />
+              <span className="mt-0.5 shrink-0 w-6 h-6 rounded-md flex items-center
+                               justify-center bg-purple-50 dark:bg-purple-900/30
+                               text-[#7C5CFF] dark:text-purple-300">
+                <Icon size={12} strokeWidth={2} />
               </span>
-              <div>
-                <p className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-0.5">
+              <div className="min-w-0 flex-1">
+                <p className="text-[9.5px] font-bold text-slate-400 dark:text-slate-500
+                              uppercase tracking-widest mb-0.5 leading-none">
                   {label}
                 </p>
                 {value.split('\n').map((line, i) => (
-                  <p key={i} className="text-[12px] font-semibold text-slate-700 dark:text-slate-200 leading-snug">
+                  <p
+                    key={i}
+                    className="text-[11.5px] font-semibold text-slate-700
+                               dark:text-slate-200 leading-snug break-words"
+                  >
                     {line}
                   </p>
                 ))}
@@ -410,68 +587,75 @@ function MobileLayout() {
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-4 gap-2 p-3.5 rounded-2xl
+        {/* Stats Bar */}
+        <div className="grid grid-cols-4 p-3 rounded-2xl
                         bg-gradient-to-r from-[#7C5CFF] to-[#A78BFA]
-                        shadow-[0_6px_24px_rgba(124,92,255,0.35)]">
+                        shadow-[0_6px_24px_rgba(124,92,255,0.32)]">
           {stats.map(({ icon: Icon, count, label }, i) => (
             <div
               key={label}
-              className={`flex flex-col items-center text-white text-center
+              className={`flex flex-col items-center text-white text-center px-1
                           ${i < stats.length - 1 ? 'border-r border-white/20' : ''}`}
             >
-              <Icon size={14} strokeWidth={2} className="mb-1 opacity-80" />
+              <Icon size={13} strokeWidth={2} className="mb-0.5 opacity-80" />
               <span className="text-[17px] font-extrabold leading-none">{count}</span>
-              <span className="text-[9px] font-medium opacity-75 mt-1 leading-tight">{label}</span>
+              <span className="text-[8.5px] font-medium opacity-75 mt-1 leading-tight">
+                {label}
+              </span>
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );
 }
 
 /* ─────────────────────────────────────────
-   ABOUT ROOT EXPORT
+   ROOT EXPORT
 ───────────────────────────────────────── */
-export default function About() {
+export default function About({ onNavigate }) {
   return (
     <>
       <style>{`
         @keyframes fadeInLeft {
-          from { opacity: 0; transform: translateX(-32px); }
-          to   { opacity: 1; transform: translateX(0); }
+          from { opacity:0; transform:translateX(-28px); }
+          to   { opacity:1; transform:translateX(0); }
         }
         @keyframes fadeInRight {
-          from { opacity: 0; transform: translateX(32px); }
-          to   { opacity: 1; transform: translateX(0); }
+          from { opacity:0; transform:translateX(28px); }
+          to   { opacity:1; transform:translateX(0); }
         }
         @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(18px); }
-          to   { opacity: 1; transform: translateY(0); }
+          from { opacity:0; transform:translateY(16px); }
+          to   { opacity:1; transform:translateY(0); }
         }
         @keyframes floatSparkle {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50%       { transform: translateY(-8px) rotate(20deg); }
+          0%,100% { transform:translateY(0px) rotate(0deg); }
+          50%      { transform:translateY(-8px) rotate(20deg); }
         }
         @keyframes floatY {
-          0%, 100% { transform: translateX(-50%) translateY(0px); }
-          50%       { transform: translateX(-50%) translateY(-10px); }
+          0%,100% { transform:translateX(-50%) translateY(0px); }
+          50%      { transform:translateX(-50%) translateY(-10px); }
+        }
+        @keyframes floatYMobile {
+          0%,100% { transform:translateX(-50%) translateY(0px); }
+          50%      { transform:translateX(-50%) translateY(-7px); }
         }
       `}</style>
 
-      {/* ── DESKTOP ── */}
+      {/* ── DESKTOP: 60/40 split ── */}
       <section className="hidden lg:flex h-full">
-        <div className="w-[58%] h-full overflow-y-auto">
-          <LeftPanel />
+        <div className="w-[60%] h-full overflow-y-auto">
+          <LeftPanel onNavigate={onNavigate} />
         </div>
-        <div className="w-[42%] h-full">
+        <div className="w-[40%] h-full">
           <RightPanel />
         </div>
       </section>
 
       {/* ── MOBILE ── */}
-      <MobileLayout />
+      <MobileLayout onNavigate={onNavigate} />
     </>
   );
 }

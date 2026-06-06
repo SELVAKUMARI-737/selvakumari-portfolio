@@ -15,7 +15,7 @@ export default function App() {
   const renderPage = () => {
     switch (activePage) {
       case 'Home':         return <Hero dark={dark} onNavigate={setActivePage} />;
-      case 'About':        return <About dark={dark} />;
+      case 'About':        return <About dark={dark} onNavigate={setActivePage}/>;
       case 'Skills':       return <Skills dark={dark} />;
       case 'Projects':     return <Projects dark={dark} />;
       case 'Certificates': return <Certificates dark={dark} />;

@@ -174,7 +174,7 @@ const highlights = [
 const stats = [
   { count: '10+', label: 'Technologies' },
   { count: '5+',  label: 'Categories' },
-  { count: '3+',  label: 'Projects Built' },
+  { count: '5+',  label: 'Projects Built' },
   { count: '∞',   label: 'Learning Always' },
 ];
 

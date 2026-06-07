@@ -116,7 +116,7 @@ function LeftPanel({ onNavigate }) {
       className="flex flex-col justify-center h-full px-10 lg:px-14"
       style={{ animation: 'fadeInLeft 0.6s ease both' }}
     >
-      {/* Badge — green pulse dot + bigger text */}
+      {/* Badge */}
       <div
         className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full
                    bg-purple-50 dark:bg-purple-900/30
@@ -125,14 +125,13 @@ function LeftPanel({ onNavigate }) {
                    w-fit mb-6"
         style={{ animation: 'fadeUp 0.5s ease 0.15s both' }}
       >
-        {/* Green pulse dot */}
         <span className="relative flex h-3 w-3 shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full
                            rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex rounded-full h-3 w-3
                            bg-emerald-500" />
         </span>
-       2026 Graduate &amp; Open to Full-Time Roles
+        2026 Graduate &amp; Open to Full-Time Roles
       </div>
 
       {/* Heading */}
@@ -217,7 +216,7 @@ function LeftPanel({ onNavigate }) {
 }
 
 /* ══════════════════════════════════════════
-   DESKTOP — Right Visual Panel (unchanged)
+   DESKTOP — Right Visual Panel
 ══════════════════════════════════════════ */
 function RightPanel({ onNavigate }) {
   return (
@@ -276,7 +275,11 @@ function MobileHero({ onNavigate }) {
   };
 
   return (
+    // ROOT div — wraps ALL blocks, never closes early
     <div className="flex flex-col w-full bg-white dark:bg-[#0f172a]">
+
+      {/* ── BLOCK 1: Text content ── */}
+      <div className="flex flex-col px-5 pt-7 pb-2">
 
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full
@@ -289,7 +292,7 @@ function MobileHero({ onNavigate }) {
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
           </span>
           2026 Graduate · Open to Full-Time Roles
-        
+        </div>{/* ← badge closed */}
 
         {/* Heading */}
         <h1 className="leading-tight mb-2" style={{ animation: 'fadeUp 0.5s ease 0.2s both' }}>
@@ -329,7 +332,7 @@ function MobileHero({ onNavigate }) {
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-col gap-3" style={{ animation: 'fadeUp 0.5s ease 0.5s both' }}>
+        <div className="flex flex-col gap-3 mb-2" style={{ animation: 'fadeUp 0.5s ease 0.5s both' }}>
           <button
             onClick={() => onNavigate?.('Projects')}
             className="w-full inline-flex items-center justify-center gap-2
@@ -354,8 +357,9 @@ function MobileHero({ onNavigate }) {
             View Resume
             <Download size={15} strokeWidth={2.5} />
           </button>
-        </div>
-      </div>
+        </div>{/* ← buttons closed */}
+
+      </div>{/* ← BLOCK 1 closed */}
 
       {/* ── BLOCK 2: Purple visual with centered girl image ── */}
       <div
@@ -388,7 +392,7 @@ function MobileHero({ onNavigate }) {
           className="relative max-w-full bottom-0 object-contain object-bottom pointer-events-none select-none"
           style={{ height: '92%', maxHeight: '350px', zIndex: 3, filter: 'drop-shadow(0 18px 36px rgba(60,20,120,0.40))', animation: 'floatY 5s ease-in-out infinite' }}
         />
-      </div>
+      </div>{/* ← BLOCK 2 closed */}
 
       {/* ── BLOCK 3: About Me card ── */}
       <div
@@ -427,7 +431,7 @@ function MobileHero({ onNavigate }) {
           </button>
           <span className="text-[#7C5CFF] text-lg select-none">✦</span>
         </div>
-      </div>
+      </div>{/* ← BLOCK 3 closed */}
 
       {/* ── BLOCK 4: Social links ── */}
       <div
@@ -437,7 +441,7 @@ function MobileHero({ onNavigate }) {
         <MobileSocialRow href={GITHUB_URL} icon={<GithubIcon size={17} />} label="GitHub" sub="@SELVAKUMARI-737" />
         <MobileSocialRow href={LINKEDIN_URL} icon={<LinkedinIcon size={17} />} label="LinkedIn" sub="selvakumari-sk" />
         <MobileSocialRow href={EMAIL} icon={<Mail size={17} />} label="Email" sub="kselvakumari737@gmail.com" isEmail />
-      </div>
+      </div>{/* ← BLOCK 4 closed */}
 
       {/* Footer */}
       <p className="text-center text-[11px] text-slate-400 dark:text-slate-600 pb-6">
@@ -445,7 +449,8 @@ function MobileHero({ onNavigate }) {
         <span className="text-[#7C5CFF] font-medium">Selvakumari K</span>.
         {' '}All rights reserved.
       </p>
-    </div>
+
+    </div> // ← ROOT div closed (wraps all 4 blocks + footer)
   );
 }
 
